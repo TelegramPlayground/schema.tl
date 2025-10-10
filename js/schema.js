@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 214
+var LAYER_NUMBER = 216
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1246,6 +1246,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot_has_main_app",
           "type": "flags2.13?true"
+        },
+        {
+          "name": "bot_forum_view",
+          "type": "flags2.16?true"
         },
         {
           "name": "id",
@@ -3535,6 +3539,10 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "title_missing",
+          "type": "flags.1?true"
+        },
+        {
           "name": "title",
           "type": "string"
         },
@@ -3921,7 +3929,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 888627955,
+      "id": 2507310403,
       "predicate": "messageActionStarGiftUnique",
       "params": [
         {
@@ -3947,6 +3955,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "prepaid_upgrade",
           "type": "flags.11?true"
+        },
+        {
+          "name": "assigned",
+          "type": "flags.13?true"
         },
         {
           "name": "gift",
@@ -3983,6 +3995,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "can_resell_at",
           "type": "flags.10?int"
+        },
+        {
+          "name": "drop_original_details_stars",
+          "type": "flags.12?long"
         }
       ],
       "type": "MessageAction"
@@ -4166,6 +4182,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "transaction_id",
           "type": "flags.0?string"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 747579941,
+      "predicate": "messageActionSuggestBirthday",
+      "params": [
+        {
+          "name": "birthday",
+          "type": "Birthday"
         }
       ],
       "type": "MessageAction"
@@ -4520,7 +4547,7 @@ var SCHEMA_GLOBAL = {
       "type": "auth.SentCode"
     },
     {
-      "id": 3617783033,
+      "id": 3767884348,
       "predicate": "auth.sentCodePaymentRequired",
       "params": [
         {
@@ -4538,6 +4565,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "support_email_subject",
           "type": "string"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
         }
       ],
       "type": "auth.SentCode"
@@ -4971,7 +5006,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 3312956845,
+      "id": 2687222078,
       "predicate": "userFull",
       "params": [
         {
@@ -5193,6 +5228,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "saved_music",
           "type": "flags2.21?Document"
+        },
+        {
+          "name": "note",
+          "type": "flags2.22?TextWithEntities"
         }
       ],
       "type": "UserFull"
@@ -5394,12 +5433,16 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Dialogs"
     },
     {
-      "id": 2356252295,
+      "id": 494135274,
       "predicate": "messages.messages",
       "params": [
         {
           "name": "messages",
           "type": "Vector<Message>"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<ForumTopic>"
         },
         {
           "name": "chats",
@@ -5413,7 +5456,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 1982539325,
+      "id": 1595959062,
       "predicate": "messages.messagesSlice",
       "params": [
         {
@@ -5443,6 +5486,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "messages",
           "type": "Vector<Message>"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<ForumTopic>"
         },
         {
           "name": "chats",
@@ -5738,12 +5785,20 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 3223225727,
+      "id": 706199388,
       "predicate": "updateUserTyping",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "user_id",
           "type": "long"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
         },
         {
           "name": "action",
@@ -6053,7 +6108,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 2627162079,
+      "id": 2659499161,
       "predicate": "updateReadHistoryInbox",
       "params": [
         {
@@ -6067,6 +6122,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "peer",
           "type": "Peer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.1?int"
         },
         {
           "name": "max_id",
@@ -7724,48 +7783,6 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 422509539,
-      "predicate": "updateChannelPinnedTopic",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "pinned",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "channel_id",
-          "type": "long"
-        },
-        {
-          "name": "topic_id",
-          "type": "int"
-        }
-      ],
-      "type": "Update"
-    },
-    {
-      "id": 4263085570,
-      "predicate": "updateChannelPinnedTopics",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "channel_id",
-          "type": "long"
-        },
-        {
-          "name": "order",
-          "type": "flags.0?Vector<int>"
-        }
-      ],
-      "type": "Update"
-    },
-    {
       "id": 542282808,
       "predicate": "updateUser",
       "params": [
@@ -8383,6 +8400,90 @@ var SCHEMA_GLOBAL = {
         {
           "name": "saved_peer_id",
           "type": "Peer"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2026050784,
+      "predicate": "updateGroupCallMessage",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "from_id",
+          "type": "Peer"
+        },
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "message",
+          "type": "TextWithEntities"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3377964902,
+      "predicate": "updateGroupCallEncryptedMessage",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "from_id",
+          "type": "Peer"
+        },
+        {
+          "name": "encrypted_message",
+          "type": "bytes"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1748708434,
+      "predicate": "updatePinnedForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pinned",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3740353488,
+      "predicate": "updatePinnedForumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "order",
+          "type": "flags.0?Vector<int>"
         }
       ],
       "type": "Update"
@@ -9844,6 +9945,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "emoticon",
           "type": "string"
+        }
+      ],
+      "type": "SendMessageAction"
+    },
+    {
+      "id": 929929052,
+      "predicate": "sendMessageTextDraftAction",
+      "params": [
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "text",
+          "type": "TextWithEntities"
         }
       ],
       "type": "SendMessageAction"
@@ -20900,6 +21016,18 @@ var SCHEMA_GLOBAL = {
           "type": "flags.15?true"
         },
         {
+          "name": "messages_enabled",
+          "type": "flags.17?true"
+        },
+        {
+          "name": "can_change_messages_enabled",
+          "type": "flags.18?true"
+        },
+        {
+          "name": "min",
+          "type": "flags.19?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -21578,7 +21706,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.ChatThemes"
     },
     {
-      "id": 373835863,
+      "id": 3188294003,
       "predicate": "account.chatThemes",
       "params": [
         {
@@ -21603,7 +21731,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "next_offset",
-          "type": "flags.0?int"
+          "type": "flags.0?string"
         }
       ],
       "type": "account.ChatThemes"
@@ -22650,6 +22778,28 @@ var SCHEMA_GLOBAL = {
       "type": "InputInvoice"
     },
     {
+      "id": 1048049172,
+      "predicate": "inputInvoicePremiumAuthCode",
+      "params": [
+        {
+          "name": "purpose",
+          "type": "InputStorePaymentPurpose"
+        }
+      ],
+      "type": "InputInvoice"
+    },
+    {
+      "id": 153344209,
+      "predicate": "inputInvoiceStarGiftDropOriginalDetails",
+      "params": [
+        {
+          "name": "stargift",
+          "type": "InputSavedStarGift"
+        }
+      ],
+      "type": "InputInvoice"
+    },
+    {
       "id": 2932919257,
       "predicate": "payments.exportedInvoice",
       "params": [
@@ -23436,7 +23586,7 @@ var SCHEMA_GLOBAL = {
       "type": "ForumTopic"
     },
     {
-      "id": 1903173033,
+      "id": 3456044746,
       "predicate": "forumTopic",
       "params": [
         {
@@ -23464,12 +23614,20 @@ var SCHEMA_GLOBAL = {
           "type": "flags.6?true"
         },
         {
+          "name": "title_missing",
+          "type": "flags.7?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
         {
           "name": "date",
           "type": "int"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
         },
         {
           "name": "title",
@@ -25584,6 +25742,56 @@ var SCHEMA_GLOBAL = {
       "type": "PeerColor"
     },
     {
+      "id": 3116393370,
+      "predicate": "peerColorCollectible",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "collectible_id",
+          "type": "long"
+        },
+        {
+          "name": "gift_emoji_id",
+          "type": "long"
+        },
+        {
+          "name": "background_emoji_id",
+          "type": "long"
+        },
+        {
+          "name": "accent_color",
+          "type": "int"
+        },
+        {
+          "name": "colors",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "dark_accent_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "dark_colors",
+          "type": "flags.1?Vector<int>"
+        }
+      ],
+      "type": "PeerColor"
+    },
+    {
+      "id": 3102377641,
+      "predicate": "inputPeerColorCollectible",
+      "params": [
+        {
+          "name": "collectible_id",
+          "type": "long"
+        }
+      ],
+      "type": "PeerColor"
+    },
+    {
       "id": 639736408,
       "predicate": "help.peerColorSet",
       "params": [
@@ -27229,6 +27437,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.25?true"
         },
         {
+          "name": "stargift_drop_original_details",
+          "type": "flags.26?true"
+        },
+        {
           "name": "id",
           "type": "string"
         },
@@ -27818,6 +28030,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.8?true"
         },
         {
+          "name": "peer_color_available",
+          "type": "flags.10?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -27885,7 +28101,7 @@ var SCHEMA_GLOBAL = {
       "type": "StarGift"
     },
     {
-      "id": 468707429,
+      "id": 2965337115,
       "predicate": "starGiftUnique",
       "params": [
         {
@@ -27971,6 +28187,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "theme_peer",
           "type": "flags.10?Peer"
+        },
+        {
+          "name": "peer_color",
+          "type": "flags.11?PeerColor"
+        },
+        {
+          "name": "host_id",
+          "type": "flags.12?Peer"
         }
       ],
       "type": "StarGift"
@@ -28463,12 +28687,20 @@ var SCHEMA_GLOBAL = {
       "type": "StarGiftAttribute"
     },
     {
-      "id": 377215243,
+      "id": 1038213101,
       "predicate": "payments.starGiftUpgradePreview",
       "params": [
         {
           "name": "sample_attributes",
           "type": "Vector<StarGiftAttribute>"
+        },
+        {
+          "name": "prices",
+          "type": "Vector<StarGiftUpgradePrice>"
+        },
+        {
+          "name": "next_prices",
+          "type": "Vector<StarGiftUpgradePrice>"
         }
       ],
       "type": "payments.StarGiftUpgradePreview"
@@ -28538,7 +28770,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.WebPagePreview"
     },
     {
-      "id": 430552434,
+      "id": 2307105874,
       "predicate": "savedStarGift",
       "params": [
         {
@@ -28624,6 +28856,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "prepaid_upgrade_hash",
           "type": "flags.16?string"
+        },
+        {
+          "name": "drop_original_details_stars",
+          "type": "flags.18?long"
         }
       ],
       "type": "SavedStarGift"
@@ -29483,6 +29719,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "InputChatTheme"
+    },
+    {
+      "id": 2582262557,
+      "predicate": "starGiftUpgradePrice",
+      "params": [
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "upgrade_stars",
+          "type": "long"
+        }
+      ],
+      "type": "StarGiftUpgradePrice"
     }
   ],
   "methods": [
@@ -30076,6 +30327,25 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 1457889180,
+      "method": "auth.checkPaidAuth",
+      "params": [
+        {
+          "name": "phone_number",
+          "type": "string"
+        },
+        {
+          "name": "phone_code_hash",
+          "type": "string"
+        },
+        {
+          "name": "form_id",
+          "type": "long"
+        }
+      ],
+      "type": "auth.SentCode"
     },
     {
       "id": 3968205178,
@@ -31331,7 +31601,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2096079197,
+      "id": 1749885262,
       "method": "account.updateColor",
       "params": [
         {
@@ -31344,11 +31614,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "color",
-          "type": "flags.2?int"
-        },
-        {
-          "name": "background_emoji_id",
-          "type": "flags.0?long"
+          "type": "flags.2?PeerColor"
         }
       ],
       "type": "Bool"
@@ -31746,12 +32012,12 @@ var SCHEMA_GLOBAL = {
       "type": "account.SavedMusicIds"
     },
     {
-      "id": 4269076383,
+      "id": 3828148681,
       "method": "account.getUniqueGiftChatThemes",
       "params": [
         {
           "name": "offset",
-          "type": "int"
+          "type": "string"
         },
         {
           "name": "limit",
@@ -31849,6 +32115,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "users.SavedMusic"
+    },
+    {
+      "id": 4233311090,
+      "method": "users.suggestBirthday",
+      "params": [
+        {
+          "name": "id",
+          "type": "InputUser"
+        },
+        {
+          "name": "birthday",
+          "type": "Birthday"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 2061264541,
@@ -32104,7 +32385,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 3908330448,
+      "id": 3652857428,
       "method": "contacts.addContact",
       "params": [
         {
@@ -32130,6 +32411,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "phone",
           "type": "string"
+        },
+        {
+          "name": "note",
+          "type": "flags.1?TextWithEntities"
         }
       ],
       "type": "Updates"
@@ -32273,6 +32558,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "contacts.SponsoredPeers"
+    },
+    {
+      "id": 329212923,
+      "method": "contacts.updateContactNote",
+      "params": [
+        {
+          "name": "id",
+          "type": "InputUser"
+        },
+        {
+          "name": "note",
+          "type": "TextWithEntities"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 1673946374,
@@ -37192,6 +37492,187 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
+      "id": 1000635391,
+      "method": "messages.getForumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "q",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "offset_date",
+          "type": "int"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "offset_topic",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.ForumTopics"
+    },
+    {
+      "id": 2936687112,
+      "method": "messages.getForumTopicsByID",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "topics",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "messages.ForumTopics"
+    },
+    {
+      "id": 3469480244,
+      "method": "messages.editForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "closed",
+          "type": "flags.2?Bool"
+        },
+        {
+          "name": "hidden",
+          "type": "flags.3?Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 392032849,
+      "method": "messages.updatePinnedForumTopic",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        },
+        {
+          "name": "pinned",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 242762224,
+      "method": "messages.reorderPinnedForumTopics",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "force",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "order",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 798540757,
+      "method": "messages.createForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "title_missing",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_color",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.3?long"
+        },
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "send_as",
+          "type": "flags.2?InputPeer"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3531697936,
+      "method": "messages.deleteTopicHistory",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "messages.AffectedHistory"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -38531,183 +39012,6 @@ var SCHEMA_GLOBAL = {
         {
           "name": "tabs",
           "type": "Bool"
-        }
-      ],
-      "type": "Updates"
-    },
-    {
-      "id": 4094427684,
-      "method": "channels.createForumTopic",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "title",
-          "type": "string"
-        },
-        {
-          "name": "icon_color",
-          "type": "flags.0?int"
-        },
-        {
-          "name": "icon_emoji_id",
-          "type": "flags.3?long"
-        },
-        {
-          "name": "random_id",
-          "type": "long"
-        },
-        {
-          "name": "send_as",
-          "type": "flags.2?InputPeer"
-        }
-      ],
-      "type": "Updates"
-    },
-    {
-      "id": 233136337,
-      "method": "channels.getForumTopics",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "q",
-          "type": "flags.0?string"
-        },
-        {
-          "name": "offset_date",
-          "type": "int"
-        },
-        {
-          "name": "offset_id",
-          "type": "int"
-        },
-        {
-          "name": "offset_topic",
-          "type": "int"
-        },
-        {
-          "name": "limit",
-          "type": "int"
-        }
-      ],
-      "type": "messages.ForumTopics"
-    },
-    {
-      "id": 2961383097,
-      "method": "channels.getForumTopicsByID",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "topics",
-          "type": "Vector<int>"
-        }
-      ],
-      "type": "messages.ForumTopics"
-    },
-    {
-      "id": 4108296581,
-      "method": "channels.editForumTopic",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "topic_id",
-          "type": "int"
-        },
-        {
-          "name": "title",
-          "type": "flags.0?string"
-        },
-        {
-          "name": "icon_emoji_id",
-          "type": "flags.1?long"
-        },
-        {
-          "name": "closed",
-          "type": "flags.2?Bool"
-        },
-        {
-          "name": "hidden",
-          "type": "flags.3?Bool"
-        }
-      ],
-      "type": "Updates"
-    },
-    {
-      "id": 1814925350,
-      "method": "channels.updatePinnedForumTopic",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "topic_id",
-          "type": "int"
-        },
-        {
-          "name": "pinned",
-          "type": "Bool"
-        }
-      ],
-      "type": "Updates"
-    },
-    {
-      "id": 876830509,
-      "method": "channels.deleteTopicHistory",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "top_msg_id",
-          "type": "int"
-        }
-      ],
-      "type": "messages.AffectedHistory"
-    },
-    {
-      "id": 693150095,
-      "method": "channels.reorderPinnedForumTopics",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "force",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "order",
-          "type": "Vector<int>"
         }
       ],
       "type": "Updates"
@@ -40257,6 +40561,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.8?true"
         },
         {
+          "name": "peer_color_available",
+          "type": "flags.9?true"
+        },
+        {
+          "name": "exclude_hosted",
+          "type": "flags.10?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -41016,7 +41328,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 1958458429,
+      "id": 3916576772,
       "method": "phone.toggleGroupCallSettings",
       "params": [
         {
@@ -41034,6 +41346,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "join_muted",
           "type": "flags.0?Bool"
+        },
+        {
+          "name": "messages_enabled",
+          "type": "flags.2?Bool"
         }
       ],
       "type": "Updates"
@@ -41463,6 +41779,40 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 2273914900,
+      "method": "phone.sendGroupCallMessage",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "random_id",
+          "type": "long"
+        },
+        {
+          "name": "message",
+          "type": "TextWithEntities"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3853493613,
+      "method": "phone.sendGroupCallEncryptedMessage",
+      "params": [
+        {
+          "name": "call",
+          "type": "InputGroupCall"
+        },
+        {
+          "name": "encrypted_message",
+          "type": "bytes"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 4075959050,
