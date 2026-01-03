@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 220
+var LAYER_NUMBER = 221
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -732,6 +732,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "todo",
           "type": "TodoList"
+        }
+      ],
+      "type": "InputMedia"
+    },
+    {
+      "id": 4087948362,
+      "predicate": "inputMediaStakeDice",
+      "params": [
+        {
+          "name": "game_hash",
+          "type": "string"
+        },
+        {
+          "name": "ton_amount",
+          "type": "long"
+        },
+        {
+          "name": "client_seed",
+          "type": "bytes"
         }
       ],
       "type": "InputMedia"
@@ -2305,7 +2324,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": 3106895567,
+      "id": 2629079273,
       "predicate": "message",
       "params": [
         {
@@ -2495,6 +2514,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "schedule_repeat_period",
           "type": "flags2.10?int"
+        },
+        {
+          "name": "summary_from_language",
+          "type": "flags2.11?string"
         }
       ],
       "type": "Message"
@@ -2865,9 +2888,13 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 1065280907,
+      "id": 147581959,
       "predicate": "messageMediaDice",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "value",
           "type": "int"
@@ -2875,6 +2902,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "emoticon",
           "type": "string"
+        },
+        {
+          "name": "game_outcome",
+          "type": "flags.0?messages.EmojiGameOutcome"
         }
       ],
       "type": "MessageMedia"
@@ -8626,6 +8657,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "user_state",
           "type": "StarGiftAuctionUserState"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 4221326458,
+      "predicate": "updateEmojiGameInfo",
+      "params": [
+        {
+          "name": "info",
+          "type": "messages.EmojiGameInfo"
         }
       ],
       "type": "Update"
@@ -30542,6 +30584,17 @@ var SCHEMA_GLOBAL = {
       "type": "InputPasskeyCredential"
     },
     {
+      "id": 1528613672,
+      "predicate": "inputPasskeyCredentialFirebasePNV",
+      "params": [
+        {
+          "name": "pnv_token",
+          "type": "string"
+        }
+      ],
+      "type": "InputPasskeyCredential"
+    },
+    {
       "id": 2952094616,
       "predicate": "starGiftBackground",
       "params": [
@@ -30608,6 +30661,62 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "payments.StarGiftUpgradeAttributes"
+    },
+    {
+      "id": 3660240455,
+      "predicate": "messages.emojiGameOutcome",
+      "params": [
+        {
+          "name": "seed",
+          "type": "bytes"
+        },
+        {
+          "name": "stake_ton_amount",
+          "type": "long"
+        },
+        {
+          "name": "ton_amount",
+          "type": "long"
+        }
+      ],
+      "type": "messages.EmojiGameOutcome"
+    },
+    {
+      "id": 1508266805,
+      "predicate": "messages.emojiGameUnavailable",
+      "params": [],
+      "type": "messages.EmojiGameInfo"
+    },
+    {
+      "id": 1155883043,
+      "predicate": "messages.emojiGameDiceInfo",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "game_hash",
+          "type": "string"
+        },
+        {
+          "name": "prev_stake",
+          "type": "long"
+        },
+        {
+          "name": "current_streak",
+          "type": "int"
+        },
+        {
+          "name": "params",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "plays_left",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "messages.EmojiGameInfo"
     }
   ],
   "methods": [
@@ -38637,6 +38746,35 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.AffectedHistory"
+    },
+    {
+      "id": 4219374759,
+      "method": "messages.getEmojiGameInfo",
+      "params": [],
+      "type": "messages.EmojiGameInfo"
+    },
+    {
+      "id": 2638284002,
+      "method": "messages.summarizeText",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "to_lang",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "TextWithEntities"
     },
     {
       "id": 3990128682,
