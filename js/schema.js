@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 221
+var LAYER_NUMBER = 222
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1279,6 +1279,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.16?true"
         },
         {
+          "name": "bot_forum_can_manage_topics",
+          "type": "flags2.17?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1794,6 +1798,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "megagroup",
           "type": "flags.8?true"
+        },
+        {
+          "name": "monoforum",
+          "type": "flags.10?true"
         },
         {
           "name": "id",
@@ -4003,7 +4011,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 2507310403,
+      "id": 3871544610,
       "predicate": "messageActionStarGiftUnique",
       "params": [
         {
@@ -4037,6 +4045,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_offer",
           "type": "flags.14?true"
+        },
+        {
+          "name": "craft",
+          "type": "flags.16?true"
         },
         {
           "name": "gift",
@@ -4077,6 +4089,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "drop_original_details_stars",
           "type": "flags.12?long"
+        },
+        {
+          "name": "can_craft_at",
+          "type": "flags.15?int"
         }
       ],
       "type": "MessageAction"
@@ -4325,6 +4341,28 @@ var SCHEMA_GLOBAL = {
         {
           "name": "price",
           "type": "StarsAmount"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 2961100933,
+      "predicate": "messageActionNewCreatorPending",
+      "params": [
+        {
+          "name": "new_creator_id",
+          "type": "long"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 3783807035,
+      "predicate": "messageActionChangeCreator",
+      "params": [
+        {
+          "name": "new_creator_id",
+          "type": "long"
         }
       ],
       "type": "MessageAction"
@@ -8673,6 +8711,12 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 2886149188,
+      "predicate": "updateStarGiftCraftFail",
+      "params": [],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -11632,9 +11676,17 @@ var SCHEMA_GLOBAL = {
       "type": "BotInfo"
     },
     {
-      "id": 2734311552,
+      "id": 2098662655,
       "predicate": "keyboardButton",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11643,9 +11695,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 629866245,
+      "id": 3624674796,
       "predicate": "keyboardButtonUrl",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11658,7 +11718,7 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 901503851,
+      "id": 3861629280,
       "predicate": "keyboardButtonCallback",
       "params": [
         {
@@ -11668,6 +11728,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "requires_password",
           "type": "flags.0?true"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
         },
         {
           "name": "text",
@@ -11681,20 +11745,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 2976541737,
+      "id": 1098841487,
       "predicate": "keyboardButtonRequestPhone",
       "params": [
         {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 4235815743,
-      "predicate": "keyboardButtonRequestGeoLocation",
-      "params": [
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11703,7 +11764,26 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 2478439349,
+      "id": 2856384845,
+      "predicate": "keyboardButtonRequestGeoLocation",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": 2568198652,
       "predicate": "keyboardButtonSwitchInline",
       "params": [
         {
@@ -11713,6 +11793,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "same_peer",
           "type": "flags.0?true"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
         },
         {
           "name": "text",
@@ -11730,20 +11814,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 1358175439,
+      "id": 2311426297,
       "predicate": "keyboardButtonGame",
       "params": [
         {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2950250427,
-      "predicate": "keyboardButtonBuy",
-      "params": [
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11752,12 +11833,35 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 280464681,
+      "id": 1067792645,
+      "predicate": "keyboardButtonBuy",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": 4111468281,
       "predicate": "keyboardButtonUrlAuth",
       "params": [
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
         },
         {
           "name": "text",
@@ -11779,7 +11883,7 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 3492708308,
+      "id": 1744911986,
       "predicate": "inputKeyboardButtonUrlAuth",
       "params": [
         {
@@ -11789,6 +11893,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "request_write_access",
           "type": "flags.0?true"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
         },
         {
           "name": "text",
@@ -11810,12 +11918,16 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 3150401885,
+      "id": 2047989634,
       "predicate": "keyboardButtonRequestPoll",
       "params": [
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
         },
         {
           "name": "quiz",
@@ -11829,9 +11941,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 3918005115,
+      "id": 2103314375,
       "predicate": "inputKeyboardButtonUserProfile",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11844,9 +11964,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 814112961,
+      "id": 3237829897,
       "predicate": "keyboardButtonUserProfile",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11859,10 +11987,18 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 326529584,
+      "id": 3896947104,
       "predicate": "keyboardButtonWebView",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
           "name": "text",
           "type": "string"
         },
@@ -11874,10 +12010,18 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 2696958044,
+      "id": 3780920176,
       "predicate": "keyboardButtonSimpleWebView",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
           "name": "text",
           "type": "string"
         },
@@ -11889,9 +12033,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 1406648280,
+      "id": 1527715317,
       "predicate": "keyboardButtonRequestPeer",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -11912,7 +12064,7 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 3378916613,
+      "id": 45580630,
       "predicate": "inputKeyboardButtonRequestPeer",
       "params": [
         {
@@ -11932,6 +12084,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?true"
         },
         {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
           "name": "text",
           "type": "string"
         },
@@ -11951,9 +12107,17 @@ var SCHEMA_GLOBAL = {
       "type": "KeyboardButton"
     },
     {
-      "id": 1976723854,
+      "id": 3167006480,
       "predicate": "keyboardButtonCopy",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
         {
           "name": "text",
           "type": "string"
@@ -19681,7 +19845,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.SearchCounter"
     },
     {
-      "id": 2463316494,
+      "id": 855293722,
       "predicate": "urlAuthResultRequest",
       "params": [
         {
@@ -19693,23 +19857,47 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "request_phone_number",
+          "type": "flags.1?true"
+        },
+        {
           "name": "bot",
           "type": "User"
         },
         {
           "name": "domain",
           "type": "string"
+        },
+        {
+          "name": "browser",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "platform",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "ip",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "region",
+          "type": "flags.2?string"
         }
       ],
       "type": "UrlAuthResult"
     },
     {
-      "id": 2408320590,
+      "id": 1648005024,
       "predicate": "urlAuthResultAccepted",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "url",
-          "type": "string"
+          "type": "flags.0?string"
         }
       ],
       "type": "UrlAuthResult"
@@ -28399,7 +28587,7 @@ var SCHEMA_GLOBAL = {
       "type": "StarGift"
     },
     {
-      "id": 1453155529,
+      "id": 2247141837,
       "predicate": "starGiftUnique",
       "params": [
         {
@@ -28417,6 +28605,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "theme_available",
           "type": "flags.9?true"
+        },
+        {
+          "name": "burned",
+          "type": "flags.14?true"
+        },
+        {
+          "name": "crafted",
+          "type": "flags.15?true"
         },
         {
           "name": "id",
@@ -28501,6 +28697,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "offer_min_stars",
           "type": "flags.13?int"
+        },
+        {
+          "name": "craft_chance_permille",
+          "type": "flags.16?int"
         }
       ],
       "type": "StarGift"
@@ -28893,9 +29093,17 @@ var SCHEMA_GLOBAL = {
       "type": "BotVerification"
     },
     {
-      "id": 970559507,
+      "id": 1448235490,
       "predicate": "starGiftAttributeModel",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "crafted",
+          "type": "flags.0?true"
+        },
         {
           "name": "name",
           "type": "string"
@@ -28905,14 +29113,14 @@ var SCHEMA_GLOBAL = {
           "type": "Document"
         },
         {
-          "name": "rarity_permille",
-          "type": "int"
+          "name": "rarity",
+          "type": "StarGiftAttributeRarity"
         }
       ],
       "type": "StarGiftAttribute"
     },
     {
-      "id": 330104601,
+      "id": 1315997162,
       "predicate": "starGiftAttributePattern",
       "params": [
         {
@@ -28924,14 +29132,14 @@ var SCHEMA_GLOBAL = {
           "type": "Document"
         },
         {
-          "name": "rarity_permille",
-          "type": "int"
+          "name": "rarity",
+          "type": "StarGiftAttributeRarity"
         }
       ],
       "type": "StarGiftAttribute"
     },
     {
-      "id": 3644687772,
+      "id": 2670003428,
       "predicate": "starGiftAttributeBackdrop",
       "params": [
         {
@@ -28959,8 +29167,8 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         },
         {
-          "name": "rarity_permille",
-          "type": "int"
+          "name": "rarity",
+          "type": "StarGiftAttributeRarity"
         }
       ],
       "type": "StarGiftAttribute"
@@ -29076,7 +29284,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.WebPagePreview"
     },
     {
-      "id": 3939926110,
+      "id": 1105150972,
       "predicate": "savedStarGift",
       "params": [
         {
@@ -29170,6 +29378,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "gift_num",
           "type": "flags.19?int"
+        },
+        {
+          "name": "can_craft_at",
+          "type": "flags.20?int"
         }
       ],
       "type": "SavedStarGift"
@@ -30717,6 +30929,68 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.EmojiGameInfo"
+    },
+    {
+      "id": 910391095,
+      "predicate": "starGiftAttributeRarity",
+      "params": [
+        {
+          "name": "permille",
+          "type": "int"
+        }
+      ],
+      "type": "StarGiftAttributeRarity"
+    },
+    {
+      "id": 3687736201,
+      "predicate": "starGiftAttributeRarityUncommon",
+      "params": [],
+      "type": "StarGiftAttributeRarity"
+    },
+    {
+      "id": 4035793259,
+      "predicate": "starGiftAttributeRarityRare",
+      "params": [],
+      "type": "StarGiftAttributeRarity"
+    },
+    {
+      "id": 2029777832,
+      "predicate": "starGiftAttributeRarityEpic",
+      "params": [],
+      "type": "StarGiftAttributeRarity"
+    },
+    {
+      "id": 3472353192,
+      "predicate": "starGiftAttributeRarityLegendary",
+      "params": [],
+      "type": "StarGiftAttributeRarity"
+    },
+    {
+      "id": 1339896880,
+      "predicate": "keyboardButtonStyle",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "bg_primary",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "bg_danger",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "bg_success",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "icon",
+          "type": "flags.3?long"
+        }
+      ],
+      "type": "KeyboardButtonStyle"
     }
   ],
   "methods": [
@@ -36155,6 +36429,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "share_phone_number",
+          "type": "flags.3?true"
+        },
+        {
           "name": "peer",
           "type": "flags.1?InputPeer"
         },
@@ -40409,6 +40687,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 2684950703,
+      "method": "channels.getFutureCreatorAfterLeave",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "User"
+    },
+    {
       "id": 2854709741,
       "method": "bots.sendCustomRequest",
       "params": [
@@ -41783,6 +42072,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.2?true"
         },
         {
+          "name": "for_craft",
+          "type": "flags.4?true"
+        },
+        {
           "name": "attributes_hash",
           "type": "flags.0?long"
         },
@@ -42042,6 +42335,36 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "payments.StarGiftUpgradeAttributes"
+    },
+    {
+      "id": 4245019904,
+      "method": "payments.getCraftStarGifts",
+      "params": [
+        {
+          "name": "gift_id",
+          "type": "long"
+        },
+        {
+          "name": "offset",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "payments.SavedStarGifts"
+    },
+    {
+      "id": 2969135183,
+      "method": "payments.craftStarGift",
+      "params": [
+        {
+          "name": "stargift",
+          "type": "Vector<InputSavedStarGift>"
+        }
+      ],
+      "type": "Updates"
     },
     {
       "id": 2418125671,
