@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 222
+var LAYER_NUMBER = 223
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -2193,10 +2193,14 @@ var SCHEMA_GLOBAL = {
       "type": "ChatFull"
     },
     {
-      "id": 3224190983,
+      "id": 954703838,
       "predicate": "chatParticipant",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "user_id",
           "type": "long"
         },
@@ -2207,25 +2211,41 @@ var SCHEMA_GLOBAL = {
         {
           "name": "date",
           "type": "int"
+        },
+        {
+          "name": "rank",
+          "type": "flags.0?string"
         }
       ],
       "type": "ChatParticipant"
     },
     {
-      "id": 3832270564,
+      "id": 3791153080,
       "predicate": "chatParticipantCreator",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "user_id",
           "type": "long"
+        },
+        {
+          "name": "rank",
+          "type": "flags.0?string"
         }
       ],
       "type": "ChatParticipant"
     },
     {
-      "id": 2694004571,
+      "id": 56677842,
       "predicate": "chatParticipantAdmin",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "user_id",
           "type": "long"
@@ -2237,6 +2257,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "date",
           "type": "int"
+        },
+        {
+          "name": "rank",
+          "type": "flags.0?string"
         }
       ],
       "type": "ChatParticipant"
@@ -2332,7 +2356,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": 2629079273,
+      "id": 988112002,
       "predicate": "message",
       "params": [
         {
@@ -2414,6 +2438,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_boosts_applied",
           "type": "flags.29?int"
+        },
+        {
+          "name": "from_rank",
+          "type": "flags2.12?string"
         },
         {
           "name": "peer_id",
@@ -4368,6 +4396,44 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 3212666226,
+      "predicate": "messageActionNoForwardsToggle",
+      "params": [
+        {
+          "name": "prev_value",
+          "type": "Bool"
+        },
+        {
+          "name": "new_value",
+          "type": "Bool"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 1042781114,
+      "predicate": "messageActionNoForwardsRequest",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "expired",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "prev_value",
+          "type": "Bool"
+        },
+        {
+          "name": "new_value",
+          "type": "Bool"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 3582593222,
       "predicate": "dialog",
       "params": [
@@ -5254,6 +5320,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "display_gifts_button",
           "type": "flags2.16?true"
+        },
+        {
+          "name": "noforwards_my_enabled",
+          "type": "flags2.23?true"
+        },
+        {
+          "name": "noforwards_peer_enabled",
+          "type": "flags2.24?true"
         },
         {
           "name": "id",
@@ -8714,6 +8788,29 @@ var SCHEMA_GLOBAL = {
       "id": 2886149188,
       "predicate": "updateStarGiftCraftFail",
       "params": [],
+      "type": "Update"
+    },
+    {
+      "id": 3179505593,
+      "predicate": "updateChatParticipantRank",
+      "params": [
+        {
+          "name": "chat_id",
+          "type": "long"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "rank",
+          "type": "string"
+        },
+        {
+          "name": "version",
+          "type": "int"
+        }
+      ],
       "type": "Update"
     },
     {
@@ -12568,6 +12665,53 @@ var SCHEMA_GLOBAL = {
       "type": "MessageEntity"
     },
     {
+      "id": 2420819911,
+      "predicate": "messageEntityFormattedDate",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "relative",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "short_time",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "long_time",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "short_date",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "long_date",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "day_of_week",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
       "id": 4002160262,
       "predicate": "inputChannelEmpty",
       "params": [],
@@ -12764,7 +12908,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelMessagesFilter"
     },
     {
-      "id": 3409540633,
+      "id": 466961494,
       "predicate": "channelParticipant",
       "params": [
         {
@@ -12782,12 +12926,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "subscription_until_date",
           "type": "flags.0?int"
+        },
+        {
+          "name": "rank",
+          "type": "flags.2?string"
         }
       ],
       "type": "ChannelParticipant"
     },
     {
-      "id": 1331723247,
+      "id": 2840037914,
       "predicate": "channelParticipantSelf",
       "params": [
         {
@@ -12813,6 +12961,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "subscription_until_date",
           "type": "flags.1?int"
+        },
+        {
+          "name": "rank",
+          "type": "flags.2?string"
         }
       ],
       "type": "ChannelParticipant"
@@ -12884,7 +13036,7 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelParticipant"
     },
     {
-      "id": 1844969806,
+      "id": 3589320081,
       "predicate": "channelParticipantBanned",
       "params": [
         {
@@ -12910,6 +13062,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "banned_rights",
           "type": "ChatBannedRights"
+        },
+        {
+          "name": "rank",
+          "type": "flags.2?string"
         }
       ],
       "type": "ChannelParticipant"
@@ -17516,6 +17672,25 @@ var SCHEMA_GLOBAL = {
       "type": "ChannelAdminLogEventAction"
     },
     {
+      "id": 1476834540,
+      "predicate": "channelAdminLogEventActionParticipantEditRank",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "prev_rank",
+          "type": "string"
+        },
+        {
+          "name": "new_rank",
+          "type": "string"
+        }
+      ],
+      "type": "ChannelAdminLogEventAction"
+    },
+    {
       "id": 531458253,
       "predicate": "channelAdminLogEvent",
       "params": [
@@ -17640,6 +17815,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "sub_extend",
           "type": "flags.18?true"
+        },
+        {
+          "name": "edit_rank",
+          "type": "flags.19?true"
         }
       ],
       "type": "ChannelAdminLogEventsFilter"
@@ -19356,6 +19535,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "manage_direct_messages",
           "type": "flags.17?true"
+        },
+        {
+          "name": "manage_ranks",
+          "type": "flags.18?true"
         }
       ],
       "type": "ChatAdminRights"
@@ -19447,6 +19630,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "send_plain",
           "type": "flags.25?true"
+        },
+        {
+          "name": "edit_rank",
+          "type": "flags.26?true"
         },
         {
           "name": "until_date",
@@ -19845,7 +20032,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.SearchCounter"
     },
     {
-      "id": 855293722,
+      "id": 4177062686,
       "predicate": "urlAuthResultRequest",
       "params": [
         {
@@ -19859,6 +20046,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "request_phone_number",
           "type": "flags.1?true"
+        },
+        {
+          "name": "match_codes_first",
+          "type": "flags.5?true"
         },
         {
           "name": "bot",
@@ -19883,6 +20074,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "region",
           "type": "flags.2?string"
+        },
+        {
+          "name": "match_codes",
+          "type": "flags.3?Vector<string>"
+        },
+        {
+          "name": "user_id_hint",
+          "type": "flags.4?long"
         }
       ],
       "type": "UrlAuthResult"
@@ -36390,7 +36589,7 @@ var SCHEMA_GLOBAL = {
       "type": "Vector<messages.SearchCounter>"
     },
     {
-      "id": 428848198,
+      "id": 2303510940,
       "method": "messages.requestUrlAuth",
       "params": [
         {
@@ -36412,12 +36611,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "url",
           "type": "flags.2?string"
+        },
+        {
+          "name": "in_app_origin",
+          "type": "flags.3?string"
         }
       ],
       "type": "UrlAuthResult"
     },
     {
-      "id": 2972479781,
+      "id": 1738797278,
       "method": "messages.acceptUrlAuth",
       "params": [
         {
@@ -36447,6 +36650,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "url",
           "type": "flags.2?string"
+        },
+        {
+          "name": "match_code",
+          "type": "flags.4?string"
         }
       ],
       "type": "UrlAuthResult"
@@ -37173,9 +37380,13 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 2971578274,
+      "id": 2986875445,
       "method": "messages.toggleNoForwards",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
@@ -37183,6 +37394,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "enabled",
           "type": "Bool"
+        },
+        {
+          "name": "request_msg_id",
+          "type": "flags.0?int"
         }
       ],
       "type": "Updates"
@@ -39055,6 +39270,81 @@ var SCHEMA_GLOBAL = {
       "type": "TextWithEntities"
     },
     {
+      "id": 4148410455,
+      "method": "messages.editChatCreator",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "password",
+          "type": "InputCheckPasswordSRP"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 998051494,
+      "method": "messages.getFutureChatCreatorAfterLeave",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "User"
+    },
+    {
+      "id": 2685350576,
+      "method": "messages.editChatParticipantRank",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "participant",
+          "type": "InputPeer"
+        },
+        {
+          "name": "rank",
+          "type": "string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 893610940,
+      "method": "messages.declineUrlAuth",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3382999819,
+      "method": "messages.checkUrlAuthMatchCode",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "match_code",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -39839,9 +40129,13 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3543959810,
+      "id": 2593697128,
       "method": "channels.editAdmin",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "channel",
           "type": "InputChannel"
@@ -39856,7 +40150,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "rank",
-          "type": "string"
+          "type": "flags.0?string"
         }
       ],
       "type": "Updates"
@@ -40199,25 +40493,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
-    },
-    {
-      "id": 2402864415,
-      "method": "channels.editCreator",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        },
-        {
-          "name": "user_id",
-          "type": "InputUser"
-        },
-        {
-          "name": "password",
-          "type": "InputCheckPasswordSRP"
-        }
-      ],
-      "type": "Updates"
     },
     {
       "id": 1491484525,
@@ -40685,17 +40960,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
-    },
-    {
-      "id": 2684950703,
-      "method": "channels.getFutureCreatorAfterLeave",
-      "params": [
-        {
-          "name": "channel",
-          "type": "InputChannel"
-        }
-      ],
-      "type": "User"
     },
     {
       "id": 2854709741,
