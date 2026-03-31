@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 223
+var LAYER_NUMBER = 224
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -275,7 +275,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 505969924,
+      "id": 2105767386,
       "predicate": "inputMediaUploadedPhoto",
       "params": [
         {
@@ -285,6 +285,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "spoiler",
           "type": "flags.2?true"
+        },
+        {
+          "name": "live_photo",
+          "type": "flags.3?true"
         },
         {
           "name": "file",
@@ -297,12 +301,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "ttl_seconds",
           "type": "flags.1?int"
+        },
+        {
+          "name": "video",
+          "type": "flags.3?InputDocument"
         }
       ],
       "type": "InputMedia"
     },
     {
-      "id": 3015312949,
+      "id": 3819914292,
       "predicate": "inputMediaPhoto",
       "params": [
         {
@@ -314,12 +322,20 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?true"
         },
         {
+          "name": "live_photo",
+          "type": "flags.2?true"
+        },
+        {
           "name": "id",
           "type": "InputPhoto"
         },
         {
           "name": "ttl_seconds",
           "type": "flags.0?int"
+        },
+        {
+          "name": "video",
+          "type": "flags.2?InputDocument"
         }
       ],
       "type": "InputMedia"
@@ -623,7 +639,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 261416433,
+      "id": 2285519112,
       "predicate": "inputMediaPoll",
       "params": [
         {
@@ -636,7 +652,11 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "correct_answers",
-          "type": "flags.0?Vector<bytes>"
+          "type": "flags.0?Vector<int>"
+        },
+        {
+          "name": "attached_media",
+          "type": "flags.3?InputMedia"
         },
         {
           "name": "solution",
@@ -645,6 +665,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "solution_entities",
           "type": "flags.1?Vector<MessageEntity>"
+        },
+        {
+          "name": "solution_media",
+          "type": "flags.2?InputMedia"
         }
       ],
       "type": "InputMedia"
@@ -1281,6 +1305,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot_forum_can_manage_topics",
           "type": "flags2.17?true"
+        },
+        {
+          "name": "bot_can_manage_bots",
+          "type": "flags2.18?true"
         },
         {
           "name": "id",
@@ -2640,7 +2668,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 1766936791,
+      "id": 3793152867,
       "predicate": "messageMediaPhoto",
       "params": [
         {
@@ -2652,12 +2680,20 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "live_photo",
+          "type": "flags.4?true"
+        },
+        {
           "name": "photo",
           "type": "flags.0?Photo"
         },
         {
           "name": "ttl_seconds",
           "type": "flags.2?int"
+        },
+        {
+          "name": "video",
+          "type": "flags.4?Document"
         }
       ],
       "type": "MessageMedia"
@@ -2909,9 +2945,13 @@ var SCHEMA_GLOBAL = {
       "type": "MessageMedia"
     },
     {
-      "id": 1272375192,
+      "id": 2000637542,
       "predicate": "messageMediaPoll",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "poll",
           "type": "Poll"
@@ -2919,6 +2959,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "results",
           "type": "PollResults"
+        },
+        {
+          "name": "attached_media",
+          "type": "flags.0?MessageMedia"
         }
       ],
       "type": "MessageMedia"
@@ -4434,7 +4478,40 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 3582593222,
+      "id": 2644626796,
+      "predicate": "messageActionPollAppendAnswer",
+      "params": [
+        {
+          "name": "answer",
+          "type": "PollAnswer"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 966161628,
+      "predicate": "messageActionPollDeleteAnswer",
+      "params": [
+        {
+          "name": "answer",
+          "type": "PollAnswer"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 375414334,
+      "predicate": "messageActionManagedBotCreated",
+      "params": [
+        {
+          "name": "bot_id",
+          "type": "long"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
+      "id": 4236900339,
       "predicate": "dialog",
       "params": [
         {
@@ -4479,6 +4556,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "unread_reactions_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_poll_votes_count",
           "type": "int"
         },
         {
@@ -5242,7 +5323,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 2687222078,
+      "id": 114026053,
       "predicate": "userFull",
       "params": [
         {
@@ -5328,6 +5409,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "noforwards_peer_enabled",
           "type": "flags2.24?true"
+        },
+        {
+          "name": "unofficial_security_risk",
+          "type": "flags2.26?true"
         },
         {
           "name": "id",
@@ -5476,6 +5561,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "note",
           "type": "flags2.22?TextWithEntities"
+        },
+        {
+          "name": "bot_manager_id",
+          "type": "flags2.25?long"
         }
       ],
       "type": "UserFull"
@@ -5972,6 +6061,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 464520273,
       "predicate": "inputMessagesFilterPinned",
+      "params": [],
+      "type": "MessagesFilter"
+    },
+    {
+      "id": 4197173514,
+      "predicate": "inputMessagesFilterPoll",
       "params": [],
       "type": "MessagesFilter"
     },
@@ -7175,12 +7270,24 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 2896258427,
+      "id": 3595325995,
       "predicate": "updateMessagePoll",
       "params": [
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "flags.1?Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "flags.1?int"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.2?int"
         },
         {
           "name": "poll_id",
@@ -7328,7 +7435,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 619974263,
+      "id": 1989799956,
       "predicate": "updateMessagePollVote",
       "params": [
         {
@@ -7342,6 +7449,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "options",
           "type": "Vector<bytes>"
+        },
+        {
+          "name": "positions",
+          "type": "Vector<int>"
         },
         {
           "name": "qts",
@@ -8808,6 +8919,25 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "version",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1216408986,
+      "predicate": "updateManagedBot",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "bot_id",
+          "type": "long"
+        },
+        {
+          "name": "qts",
           "type": "int"
         }
       ],
@@ -12706,6 +12836,55 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": 1903653142,
+      "predicate": "messageEntityDiffInsert",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": 3334596007,
+      "predicate": "messageEntityDiffReplace",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        },
+        {
+          "name": "old_text",
+          "type": "string"
+        }
+      ],
+      "type": "MessageEntity"
+    },
+    {
+      "id": 106086853,
+      "predicate": "messageEntityDiffDelete",
+      "params": [
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "length",
           "type": "int"
         }
       ],
@@ -19319,9 +19498,13 @@ var SCHEMA_GLOBAL = {
       "type": "help.UserInfo"
     },
     {
-      "id": 4279689930,
+      "id": 1266514026,
       "predicate": "pollAnswer",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "text",
           "type": "TextWithEntities"
@@ -19329,12 +19512,43 @@ var SCHEMA_GLOBAL = {
         {
           "name": "option",
           "type": "bytes"
+        },
+        {
+          "name": "media",
+          "type": "flags.0?MessageMedia"
+        },
+        {
+          "name": "added_by",
+          "type": "flags.1?Peer"
+        },
+        {
+          "name": "date",
+          "type": "flags.1?int"
         }
       ],
       "type": "PollAnswer"
     },
     {
-      "id": 1484026161,
+      "id": 429911446,
+      "predicate": "inputPollAnswer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "text",
+          "type": "TextWithEntities"
+        },
+        {
+          "name": "media",
+          "type": "flags.0?InputMedia"
+        }
+      ],
+      "type": "PollAnswer"
+    },
+    {
+      "id": 3091356649,
       "predicate": "poll",
       "params": [
         {
@@ -19362,6 +19576,26 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
+          "name": "open_answers",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "revoting_disabled",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "shuffle_answers",
+          "type": "flags.8?true"
+        },
+        {
+          "name": "hide_results_until_close",
+          "type": "flags.9?true"
+        },
+        {
+          "name": "creator",
+          "type": "flags.10?true"
+        },
+        {
           "name": "question",
           "type": "TextWithEntities"
         },
@@ -19376,12 +19610,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "close_date",
           "type": "flags.5?int"
+        },
+        {
+          "name": "hash",
+          "type": "long"
         }
       ],
       "type": "Poll"
     },
     {
-      "id": 997055186,
+      "id": 910500618,
       "predicate": "pollAnswerVoters",
       "params": [
         {
@@ -19402,13 +19640,17 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "voters",
-          "type": "int"
+          "type": "flags.2?int"
+        },
+        {
+          "name": "recent_voters",
+          "type": "flags.2?Vector<Peer>"
         }
       ],
       "type": "PollAnswerVoters"
     },
     {
-      "id": 2061444128,
+      "id": 3128668510,
       "predicate": "pollResults",
       "params": [
         {
@@ -19418,6 +19660,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "min",
           "type": "flags.0?true"
+        },
+        {
+          "name": "has_unread_votes",
+          "type": "flags.6?true"
         },
         {
           "name": "results",
@@ -19438,6 +19684,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "solution_entities",
           "type": "flags.4?Vector<MessageEntity>"
+        },
+        {
+          "name": "solution_media",
+          "type": "flags.5?MessageMedia"
         }
       ],
       "type": "PollResults"
@@ -20032,7 +20282,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.SearchCounter"
     },
     {
-      "id": 4177062686,
+      "id": 1020666860,
       "predicate": "urlAuthResultRequest",
       "params": [
         {
@@ -20050,6 +20300,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "match_codes_first",
           "type": "flags.5?true"
+        },
+        {
+          "name": "is_app",
+          "type": "flags.6?true"
         },
         {
           "name": "bot",
@@ -20082,6 +20336,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "user_id_hint",
           "type": "flags.4?long"
+        },
+        {
+          "name": "verified_app_name",
+          "type": "flags.7?string"
         }
       ],
       "type": "UrlAuthResult"
@@ -21404,7 +21662,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.DiscussionMessage"
     },
     {
-      "id": 1763137035,
+      "id": 462937446,
       "predicate": "messageReplyHeader",
       "params": [
         {
@@ -21458,6 +21716,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "todo_item_id",
           "type": "flags.11?int"
+        },
+        {
+          "name": "poll_option",
+          "type": "flags.12?bytes"
         }
       ],
       "type": "MessageReplyHeader"
@@ -24231,7 +24493,7 @@ var SCHEMA_GLOBAL = {
       "type": "ForumTopic"
     },
     {
-      "id": 3456044746,
+      "id": 4242200597,
       "predicate": "forumTopic",
       "params": [
         {
@@ -24308,6 +24570,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "unread_reactions_count",
+          "type": "int"
+        },
+        {
+          "name": "unread_poll_votes_count",
           "type": "int"
         },
         {
@@ -24467,6 +24733,29 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bot_admin_rights",
           "type": "flags.2?ChatAdminRights"
+        }
+      ],
+      "type": "RequestPeerType"
+    },
+    {
+      "id": 1048699000,
+      "predicate": "requestPeerTypeCreateBot",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "bot_managed",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "suggested_name",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "suggested_username",
+          "type": "flags.2?string"
         }
       ],
       "type": "RequestPeerType"
@@ -25117,7 +25406,7 @@ var SCHEMA_GLOBAL = {
       "type": "StoryItem"
     },
     {
-      "id": 3992020209,
+      "id": 379894076,
       "predicate": "storyItem",
       "params": [
         {
@@ -25211,6 +25500,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "albums",
           "type": "flags.19?Vector<int>"
+        },
+        {
+          "name": "music",
+          "type": "flags.20?Document"
         }
       ],
       "type": "StoryItem"
@@ -25444,7 +25737,7 @@ var SCHEMA_GLOBAL = {
       "type": "stories.StoryViews"
     },
     {
-      "id": 2258615824,
+      "id": 1003796418,
       "predicate": "inputReplyToMessage",
       "params": [
         {
@@ -25482,6 +25775,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "todo_item_id",
           "type": "flags.6?int"
+        },
+        {
+          "name": "poll_option",
+          "type": "flags.7?bytes"
         }
       ],
       "type": "InputReplyTo"
@@ -27840,7 +28137,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReactionNotificationsFrom"
     },
     {
-      "id": 1457736048,
+      "id": 1910827608,
       "predicate": "reactionsNotifySettings",
       "params": [
         {
@@ -27854,6 +28151,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "stories_notify_from",
           "type": "flags.1?ReactionNotificationsFrom"
+        },
+        {
+          "name": "poll_votes_notify_from",
+          "type": "flags.2?ReactionNotificationsFrom"
         },
         {
           "name": "sound",
@@ -31190,6 +31491,78 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "KeyboardButtonStyle"
+    },
+    {
+      "id": 1076577429,
+      "predicate": "inputMessageReadMetric",
+      "params": [
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "view_id",
+          "type": "long"
+        },
+        {
+          "name": "time_in_view_ms",
+          "type": "int"
+        },
+        {
+          "name": "active_time_in_view_ms",
+          "type": "int"
+        },
+        {
+          "name": "height_to_viewport_ratio_permille",
+          "type": "int"
+        },
+        {
+          "name": "seen_range_ratio_permille",
+          "type": "int"
+        }
+      ],
+      "type": "InputMessageReadMetric"
+    },
+    {
+      "id": 1012971041,
+      "predicate": "bots.exportedBotToken",
+      "params": [
+        {
+          "name": "token",
+          "type": "string"
+        }
+      ],
+      "type": "bots.ExportedBotToken"
+    },
+    {
+      "id": 4047224023,
+      "predicate": "bots.requestedButton",
+      "params": [
+        {
+          "name": "webapp_req_id",
+          "type": "string"
+        }
+      ],
+      "type": "bots.RequestedButton"
+    },
+    {
+      "id": 2430053882,
+      "predicate": "messages.composedMessageWithAI",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "result_text",
+          "type": "TextWithEntities"
+        },
+        {
+          "name": "diff_text",
+          "type": "flags.0?TextWithEntities"
+        }
+      ],
+      "type": "messages.ComposedMessageWithAI"
     }
   ],
   "methods": [
@@ -36458,7 +36831,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 1941660731,
+      "id": 3986940731,
       "method": "messages.getPollResults",
       "params": [
         {
@@ -36468,6 +36841,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "msg_id",
           "type": "int"
+        },
+        {
+          "name": "poll_hash",
+          "type": "long"
         }
       ],
       "type": "Updates"
@@ -37544,7 +37921,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 1662529584,
+      "id": 2783888197,
       "method": "messages.translateText",
       "params": [
         {
@@ -37566,6 +37943,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "to_lang",
           "type": "string"
+        },
+        {
+          "name": "tone",
+          "type": "flags.2?string"
         }
       ],
       "type": "messages.TranslatedText"
@@ -38038,16 +38419,24 @@ var SCHEMA_GLOBAL = {
       "type": "DefaultHistoryTTL"
     },
     {
-      "id": 2444415072,
+      "id": 1818030759,
       "method": "messages.sendBotRequestedPeer",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
         },
         {
           "name": "msg_id",
-          "type": "int"
+          "type": "flags.0?int"
+        },
+        {
+          "name": "webapp_req_id",
+          "type": "flags.1?string"
         },
         {
           "name": "button_id",
@@ -39247,7 +39636,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.EmojiGameInfo"
     },
     {
-      "id": 2638284002,
+      "id": 2881213254,
       "method": "messages.summarizeText",
       "params": [
         {
@@ -39265,6 +39654,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "to_lang",
           "type": "flags.0?string"
+        },
+        {
+          "name": "tone",
+          "type": "flags.2?string"
         }
       ],
       "type": "TextWithEntities"
@@ -39343,6 +39736,163 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 4248988414,
+      "method": "messages.composeMessageWithAI",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "proofread",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "emojify",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "text",
+          "type": "TextWithEntities"
+        },
+        {
+          "name": "translate_to_lang",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "change_tone",
+          "type": "flags.2?string"
+        }
+      ],
+      "type": "messages.ComposedMessageWithAI"
+    },
+    {
+      "id": 1080542694,
+      "method": "messages.reportReadMetrics",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "metrics",
+          "type": "Vector<InputMessageReadMetric>"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3720140825,
+      "method": "messages.reportMusicListen",
+      "params": [
+        {
+          "name": "id",
+          "type": "InputDocument"
+        },
+        {
+          "name": "listened_duration",
+          "type": "int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 431770477,
+      "method": "messages.addPollAnswer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "answer",
+          "type": "PollAnswer"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2894398885,
+      "method": "messages.deletePollAnswer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "option",
+          "type": "bytes"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1126722802,
+      "method": "messages.getUnreadPollVotes",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "add_offset",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        },
+        {
+          "name": "max_id",
+          "type": "int"
+        },
+        {
+          "name": "min_id",
+          "type": "int"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
+      "id": 388019416,
+      "method": "messages.readPollVotes",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "top_msg_id",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "messages.AffectedHistory"
     },
     {
       "id": 3990128682,
@@ -41451,6 +42001,89 @@ var SCHEMA_GLOBAL = {
       "type": "users.Users"
     },
     {
+      "id": 2280792475,
+      "method": "bots.checkUsername",
+      "params": [
+        {
+          "name": "username",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3853614891,
+      "method": "bots.createBot",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "via_deeplink",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "name": "manager_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "User"
+    },
+    {
+      "id": 3171785195,
+      "method": "bots.exportBotToken",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "revoke",
+          "type": "Bool"
+        }
+      ],
+      "type": "bots.ExportedBotToken"
+    },
+    {
+      "id": 832742238,
+      "method": "bots.requestWebViewButton",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "button",
+          "type": "KeyboardButton"
+        }
+      ],
+      "type": "bots.RequestedButton"
+    },
+    {
+      "id": 3206920179,
+      "method": "bots.getRequestedWebViewButton",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "webapp_req_id",
+          "type": "string"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
       "id": 924093883,
       "method": "payments.getPaymentForm",
       "params": [
@@ -42338,6 +42971,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "for_craft",
           "type": "flags.4?true"
+        },
+        {
+          "name": "stars_only",
+          "type": "flags.5?true"
         },
         {
           "name": "attributes_hash",
@@ -44119,7 +44756,7 @@ var SCHEMA_GLOBAL = {
       "type": "stories.CanSendStoryCount"
     },
     {
-      "id": 1937752812,
+      "id": 2409523352,
       "method": "stories.sendStory",
       "params": [
         {
@@ -44181,12 +44818,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "albums",
           "type": "flags.8?Vector<int>"
+        },
+        {
+          "name": "music",
+          "type": "flags.9?InputDocument"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": 3045308998,
+      "id": 744728363,
       "method": "stories.editStory",
       "params": [
         {
@@ -44220,6 +44861,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "privacy_rules",
           "type": "flags.2?Vector<InputPrivacyRule>"
+        },
+        {
+          "name": "music",
+          "type": "flags.4?InputDocument"
         }
       ],
       "type": "Updates"
