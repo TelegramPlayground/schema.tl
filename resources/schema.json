@@ -1309,6 +1309,10 @@
           "type": "flags2.18?true"
         },
         {
+          "name": "bot_guestchat",
+          "type": "flags2.19?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -2382,7 +2386,7 @@
       "type": "Message"
     },
     {
-      "id": 988112002,
+      "id": 2515496747,
       "predicate": "message",
       "params": [
         {
@@ -2488,6 +2492,10 @@
         {
           "name": "via_business_bot_id",
           "type": "flags2.0?long"
+        },
+        {
+          "name": "guestchat_via_from",
+          "type": "flags2.19?Peer"
         },
         {
           "name": "reply_to",
@@ -8939,6 +8947,39 @@
           "type": "int"
         }
       ],
+      "type": "Update"
+    },
+    {
+      "id": 3453225277,
+      "predicate": "updateBotGuestChatQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "message",
+          "type": "Message"
+        },
+        {
+          "name": "reference_messages",
+          "type": "flags.0?Vector<Message>"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2349830651,
+      "predicate": "updateAiComposeTones",
+      "params": [],
       "type": "Update"
     },
     {
@@ -19546,7 +19587,7 @@
       "type": "PollAnswer"
     },
     {
-      "id": 3091356649,
+      "id": 2523803071,
       "predicate": "poll",
       "params": [
         {
@@ -19594,6 +19635,10 @@
           "type": "flags.10?true"
         },
         {
+          "name": "subscribers_only",
+          "type": "flags.11?true"
+        },
+        {
           "name": "question",
           "type": "TextWithEntities"
         },
@@ -19608,6 +19653,10 @@
         {
           "name": "close_date",
           "type": "flags.5?int"
+        },
+        {
+          "name": "countries_iso2",
+          "type": "flags.12?Vector<string>"
         },
         {
           "name": "hash",
@@ -19662,6 +19711,10 @@
         {
           "name": "has_unread_votes",
           "type": "flags.6?true"
+        },
+        {
+          "name": "can_view_stats",
+          "type": "flags.7?true"
         },
         {
           "name": "results",
@@ -20816,6 +20869,17 @@
         {
           "name": "end_date",
           "type": "int"
+        }
+      ],
+      "type": "WebPageAttribute"
+    },
+    {
+      "id": 2005007896,
+      "predicate": "webPageAttributeAiComposeTone",
+      "params": [
+        {
+          "name": "emoji_id",
+          "type": "long"
         }
       ],
       "type": "WebPageAttribute"
@@ -31561,6 +31625,259 @@
         }
       ],
       "type": "messages.ComposedMessageWithAI"
+    },
+    {
+      "id": 824755388,
+      "predicate": "channels.found",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "results",
+          "type": "Vector<Peer>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "channels.Found"
+    },
+    {
+      "id": 431767677,
+      "predicate": "personalChannel",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "channel_id",
+          "type": "long"
+        }
+      ],
+      "type": "PersonalChannel"
+    },
+    {
+      "id": 3600476237,
+      "predicate": "channels.personalChannels",
+      "params": [
+        {
+          "name": "channels",
+          "type": "Vector<PersonalChannel>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "channels.PersonalChannels"
+    },
+    {
+      "id": 2477121395,
+      "predicate": "channelTopic",
+      "params": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "type": "ChannelTopic"
+    },
+    {
+      "id": 697941741,
+      "predicate": "stats.pollStats",
+      "params": [
+        {
+          "name": "votes_graph",
+          "type": "StatsGraph"
+        }
+      ],
+      "type": "stats.PollStats"
+    },
+    {
+      "id": 535407039,
+      "predicate": "inputAiComposeToneDefault",
+      "params": [
+        {
+          "name": "tone",
+          "type": "string"
+        }
+      ],
+      "type": "InputAiComposeTone"
+    },
+    {
+      "id": 125026432,
+      "predicate": "inputAiComposeToneID",
+      "params": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        }
+      ],
+      "type": "InputAiComposeTone"
+    },
+    {
+      "id": 530584407,
+      "predicate": "inputAiComposeToneSlug",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "InputAiComposeTone"
+    },
+    {
+      "id": 3489021609,
+      "predicate": "aiComposeTone",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "creator",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "access_hash",
+          "type": "long"
+        },
+        {
+          "name": "slug",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "prompt",
+          "type": "flags.4?string"
+        },
+        {
+          "name": "installs_count",
+          "type": "flags.2?int"
+        },
+        {
+          "name": "author_id",
+          "type": "flags.3?long"
+        },
+        {
+          "name": "example_english",
+          "type": "flags.5?AiComposeToneExample"
+        }
+      ],
+      "type": "AiComposeTone"
+    },
+    {
+      "id": 2611831828,
+      "predicate": "aiComposeToneDefault",
+      "params": [
+        {
+          "name": "tone",
+          "type": "string"
+        },
+        {
+          "name": "emoji_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "type": "AiComposeTone"
+    },
+    {
+      "id": 3254018307,
+      "predicate": "aicompose.tonesNotModified",
+      "params": [],
+      "type": "aicompose.Tones"
+    },
+    {
+      "id": 1822232318,
+      "predicate": "aicompose.tones",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        },
+        {
+          "name": "tones",
+          "type": "Vector<AiComposeTone>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "aicompose.Tones"
+    },
+    {
+      "id": 2833005465,
+      "predicate": "aiComposeToneExample",
+      "params": [
+        {
+          "name": "from",
+          "type": "string"
+        },
+        {
+          "name": "to",
+          "type": "string"
+        }
+      ],
+      "type": "AiComposeToneExample"
+    },
+    {
+      "id": 3709845395,
+      "predicate": "bots.accessSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "restricted",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "add_users",
+          "type": "flags.1?Vector<User>"
+        }
+      ],
+      "type": "bots.AccessSettings"
     }
   ],
   "methods": [
@@ -39736,7 +40053,7 @@
       "type": "Bool"
     },
     {
-      "id": 4248988414,
+      "id": 3672950153,
       "method": "messages.composeMessageWithAI",
       "params": [
         {
@@ -39760,8 +40077,8 @@
           "type": "flags.1?string"
         },
         {
-          "name": "change_tone",
-          "type": "flags.2?string"
+          "name": "tone",
+          "type": "flags.2?InputAiComposeTone"
         }
       ],
       "type": "messages.ComposedMessageWithAI"
@@ -39891,6 +40208,21 @@
         }
       ],
       "type": "messages.AffectedHistory"
+    },
+    {
+      "id": 86706395,
+      "method": "messages.setBotGuestChatResult",
+      "params": [
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "result",
+          "type": "InputBotInlineResult"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 3990128682,
@@ -41510,6 +41842,46 @@
       "type": "Bool"
     },
     {
+      "id": 668439895,
+      "method": "channels.search",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "q",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "topic_id",
+          "type": "flags.1?int"
+        },
+        {
+          "name": "offset",
+          "type": "string"
+        }
+      ],
+      "type": "channels.Found"
+    },
+    {
+      "id": 1352350822,
+      "method": "channels.getContactPersonalChannels",
+      "params": [],
+      "type": "channels.PersonalChannels"
+    },
+    {
+      "id": 2058456524,
+      "method": "channels.getTopics",
+      "params": [
+        {
+          "name": "lang_code",
+          "type": "string"
+        }
+      ],
+      "type": "Vector<ChannelTopic>"
+    },
+    {
       "id": 2854709741,
       "method": "bots.sendCustomRequest",
       "params": [
@@ -42080,6 +42452,40 @@
         }
       ],
       "type": "KeyboardButton"
+    },
+    {
+      "id": 557339555,
+      "method": "bots.getAccessSettings",
+      "params": [
+        {
+          "name": "bot",
+          "type": "InputUser"
+        }
+      ],
+      "type": "bots.AccessSettings"
+    },
+    {
+      "id": 830553304,
+      "method": "bots.editAccessSettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "restricted",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "bot",
+          "type": "InputUser"
+        },
+        {
+          "name": "add_users",
+          "type": "flags.1?Vector<InputUser>"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 924093883,
@@ -44582,6 +44988,29 @@
       "type": "stats.PublicForwards"
     },
     {
+      "id": 3263036008,
+      "method": "stats.getPollStats",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "stats.PollStats"
+    },
+    {
       "id": 2222081934,
       "method": "chatlists.exportChatlistInvite",
       "params": [
@@ -45620,6 +46049,127 @@
         }
       ],
       "type": "fragment.CollectibleInfo"
+    },
+    {
+      "id": 1252538643,
+      "method": "aicompose.createTone",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "display_author",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "emoji_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "prompt",
+          "type": "string"
+        }
+      ],
+      "type": "AiComposeTone"
+    },
+    {
+      "id": 2419838809,
+      "method": "aicompose.updateTone",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "tone",
+          "type": "InputAiComposeTone"
+        },
+        {
+          "name": "display_author",
+          "type": "flags.0?Bool"
+        },
+        {
+          "name": "emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "title",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "prompt",
+          "type": "flags.3?string"
+        }
+      ],
+      "type": "AiComposeTone"
+    },
+    {
+      "id": 394447793,
+      "method": "aicompose.saveTone",
+      "params": [
+        {
+          "name": "tone",
+          "type": "InputAiComposeTone"
+        },
+        {
+          "name": "unsave",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3711512938,
+      "method": "aicompose.deleteTone",
+      "params": [
+        {
+          "name": "tone",
+          "type": "InputAiComposeTone"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3001596419,
+      "method": "aicompose.getTone",
+      "params": [
+        {
+          "name": "tone",
+          "type": "InputAiComposeTone"
+        }
+      ],
+      "type": "aicompose.Tones"
+    },
+    {
+      "id": 2882900481,
+      "method": "aicompose.getTones",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "aicompose.Tones"
+    },
+    {
+      "id": 3518278420,
+      "method": "aicompose.getToneExample",
+      "params": [
+        {
+          "name": "tone",
+          "type": "InputAiComposeTone"
+        },
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ],
+      "type": "AiComposeToneExample"
     }
   ]
 }
