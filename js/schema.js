@@ -4872,7 +4872,7 @@ var SCHEMA_GLOBAL = {
       "type": "auth.SentCode"
     },
     {
-      "id": 3767884348,
+      "id": 4169301695,
       "predicate": "auth.sentCodePaymentRequired",
       "params": [
         {
@@ -4890,6 +4890,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "support_email_subject",
           "type": "string"
+        },
+        {
+          "name": "premium_days",
+          "type": "int"
         },
         {
           "name": "currency",
@@ -14741,6 +14745,12 @@ var SCHEMA_GLOBAL = {
       "type": "TopPeerCategory"
     },
     {
+      "id": 1814361053,
+      "predicate": "topPeerCategoryBotsGuestChat",
+      "params": [],
+      "type": "TopPeerCategory"
+    },
+    {
       "id": 4219683473,
       "predicate": "topPeerCategoryPeers",
       "params": [
@@ -19939,6 +19949,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.26?true"
         },
         {
+          "name": "send_reactions",
+          "type": "flags.27?true"
+        },
+        {
           "name": "until_date",
           "type": "int"
         }
@@ -24073,7 +24087,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputStorePaymentPurpose"
     },
     {
-      "id": 2612159341,
+      "id": 1069645911,
       "predicate": "inputStorePaymentAuthCode",
       "params": [
         {
@@ -24091,6 +24105,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "phone_code_hash",
           "type": "string"
+        },
+        {
+          "name": "premium_days",
+          "type": "int"
         },
         {
           "name": "currency",
@@ -31629,82 +31647,6 @@ var SCHEMA_GLOBAL = {
       "type": "messages.ComposedMessageWithAI"
     },
     {
-      "id": 824755388,
-      "predicate": "channels.found",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "results",
-          "type": "Vector<Peer>"
-        },
-        {
-          "name": "chats",
-          "type": "Vector<Chat>"
-        },
-        {
-          "name": "users",
-          "type": "Vector<User>"
-        },
-        {
-          "name": "next_offset",
-          "type": "flags.0?string"
-        }
-      ],
-      "type": "channels.Found"
-    },
-    {
-      "id": 431767677,
-      "predicate": "personalChannel",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "long"
-        },
-        {
-          "name": "channel_id",
-          "type": "long"
-        }
-      ],
-      "type": "PersonalChannel"
-    },
-    {
-      "id": 3600476237,
-      "predicate": "channels.personalChannels",
-      "params": [
-        {
-          "name": "channels",
-          "type": "Vector<PersonalChannel>"
-        },
-        {
-          "name": "chats",
-          "type": "Vector<Chat>"
-        },
-        {
-          "name": "users",
-          "type": "Vector<User>"
-        }
-      ],
-      "type": "channels.PersonalChannels"
-    },
-    {
-      "id": 2477121395,
-      "predicate": "channelTopic",
-      "params": [
-        {
-          "name": "id",
-          "type": "int"
-        },
-        {
-          "name": "title",
-          "type": "string"
-        }
-      ],
-      "type": "ChannelTopic"
-    },
-    {
       "id": 697941741,
       "predicate": "stats.pollStats",
       "params": [
@@ -31848,16 +31790,16 @@ var SCHEMA_GLOBAL = {
       "type": "aicompose.Tones"
     },
     {
-      "id": 2833005465,
+      "id": 4057344236,
       "predicate": "aiComposeToneExample",
       "params": [
         {
           "name": "from",
-          "type": "string"
+          "type": "TextWithEntities"
         },
         {
           "name": "to",
-          "type": "string"
+          "type": "TextWithEntities"
         }
       ],
       "type": "AiComposeToneExample"
@@ -34548,6 +34490,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "bots_app",
           "type": "flags.16?true"
+        },
+        {
+          "name": "bots_guestchat",
+          "type": "flags.17?true"
         },
         {
           "name": "offset",
@@ -40227,6 +40173,67 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 2696416504,
+      "method": "messages.deleteParticipantReactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "participant",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3820484652,
+      "method": "messages.deleteParticipantReaction",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "participant",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1442515350,
+      "method": "messages.getPersonalChannelHistory",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        },
+        {
+          "name": "max_id",
+          "type": "int"
+        },
+        {
+          "name": "min_id",
+          "type": "int"
+        },
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -41842,46 +41849,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
-    },
-    {
-      "id": 668439895,
-      "method": "channels.search",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "q",
-          "type": "flags.0?string"
-        },
-        {
-          "name": "topic_id",
-          "type": "flags.1?int"
-        },
-        {
-          "name": "offset",
-          "type": "string"
-        }
-      ],
-      "type": "channels.Found"
-    },
-    {
-      "id": 1352350822,
-      "method": "channels.getContactPersonalChannels",
-      "params": [],
-      "type": "channels.PersonalChannels"
-    },
-    {
-      "id": 2058456524,
-      "method": "channels.getTopics",
-      "params": [
-        {
-          "name": "lang_code",
-          "type": "string"
-        }
-      ],
-      "type": "Vector<ChannelTopic>"
     },
     {
       "id": 2854709741,
