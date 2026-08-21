@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 228
+var LAYER_NUMBER = 229
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1969,6 +1969,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.19?true"
         },
         {
+          "name": "has_welcome_messages",
+          "type": "flags.21?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -2134,6 +2138,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "paid_messages_available",
           "type": "flags2.20?true"
+        },
+        {
+          "name": "has_welcome_messages",
+          "type": "flags2.24?true"
         },
         {
           "name": "id",
@@ -4232,7 +4240,7 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
-      "id": 3871544610,
+      "id": 2115768711,
       "predicate": "messageActionStarGiftUnique",
       "params": [
         {
@@ -4270,6 +4278,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "craft",
           "type": "flags.16?true"
+        },
+        {
+          "name": "name_hidden",
+          "type": "flags.17?true"
         },
         {
           "name": "gift",
@@ -4314,6 +4326,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "can_craft_at",
           "type": "flags.15?int"
+        },
+        {
+          "name": "message",
+          "type": "flags.18?TextWithEntities"
         }
       ],
       "type": "MessageAction"
@@ -9316,6 +9332,45 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 2081454550,
+      "predicate": "updateEphemeralBotCallbackQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "peer",
+          "type": "flags.0?Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "name": "chat_instance",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "message",
+          "type": "EphemeralMessage"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 1812827683,
       "predicate": "updateBotStarsSubscription",
       "params": [
@@ -10823,9 +10878,21 @@ var SCHEMA_GLOBAL = {
       "type": "SendMessageAction"
     },
     {
-      "id": 929929052,
+      "id": 909162586,
       "predicate": "sendMessageTextDraftAction",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "can_stop",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "keep_on_stop",
+          "type": "flags.1?true"
+        },
         {
           "name": "random_id",
           "type": "long"
@@ -10838,9 +10905,21 @@ var SCHEMA_GLOBAL = {
       "type": "SendMessageAction"
     },
     {
-      "id": 3803331409,
+      "id": 2839005118,
       "predicate": "inputSendMessageRichMessageDraftAction",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "can_stop",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "keep_on_stop",
+          "type": "flags.1?true"
+        },
         {
           "name": "random_id",
           "type": "long"
@@ -10853,9 +10932,21 @@ var SCHEMA_GLOBAL = {
       "type": "SendMessageAction"
     },
     {
-      "id": 2731222265,
+      "id": 1381386387,
       "predicate": "sendMessageRichMessageDraftAction",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "can_stop",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "keep_on_stop",
+          "type": "flags.1?true"
+        },
         {
           "name": "random_id",
           "type": "long"
@@ -10863,6 +10954,17 @@ var SCHEMA_GLOBAL = {
         {
           "name": "rich_message",
           "type": "RichMessage"
+        }
+      ],
+      "type": "SendMessageAction"
+    },
+    {
+      "id": 4227400368,
+      "predicate": "sendMessageStopDraftAction",
+      "params": [
+        {
+          "name": "random_id",
+          "type": "long"
         }
       ],
       "type": "SendMessageAction"
@@ -12359,7 +12461,7 @@ var SCHEMA_GLOBAL = {
       "type": "BotInfo"
     },
     {
-      "id": 2098662655,
+      "id": 795322159,
       "predicate": "keyboardButton",
       "params": [
         {
@@ -12373,441 +12475,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "text",
           "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3624674796,
-      "predicate": "keyboardButtonUrl",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
         },
         {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3861629280,
-      "predicate": "keyboardButtonCallback",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "requires_password",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "data",
-          "type": "bytes"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 1098841487,
-      "predicate": "keyboardButtonRequestPhone",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2856384845,
-      "predicate": "keyboardButtonRequestGeoLocation",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2568198652,
-      "predicate": "keyboardButtonSwitchInline",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "same_peer",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "query",
-          "type": "string"
-        },
-        {
-          "name": "peer_types",
-          "type": "flags.1?Vector<InlineQueryPeerType>"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2311426297,
-      "predicate": "keyboardButtonGame",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 1067792645,
-      "predicate": "keyboardButtonBuy",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 4111468281,
-      "predicate": "keyboardButtonUrlAuth",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "fwd_text",
-          "type": "flags.0?string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "button_id",
-          "type": "int"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 1744911986,
-      "predicate": "inputKeyboardButtonUrlAuth",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "request_write_access",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "fwd_text",
-          "type": "flags.1?string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "bot",
-          "type": "InputUser"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2047989634,
-      "predicate": "keyboardButtonRequestPoll",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "quiz",
-          "type": "flags.0?Bool"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 2103314375,
-      "predicate": "inputKeyboardButtonUserProfile",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "user_id",
-          "type": "InputUser"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3237829897,
-      "predicate": "keyboardButtonUserProfile",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "user_id",
-          "type": "long"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3896947104,
-      "predicate": "keyboardButtonWebView",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3780920176,
-      "predicate": "keyboardButtonSimpleWebView",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 1527715317,
-      "predicate": "keyboardButtonRequestPeer",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "button_id",
-          "type": "int"
-        },
-        {
-          "name": "peer_type",
-          "type": "RequestPeerType"
-        },
-        {
-          "name": "max_quantity",
-          "type": "int"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 45580630,
-      "predicate": "inputKeyboardButtonRequestPeer",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "name_requested",
-          "type": "flags.0?true"
-        },
-        {
-          "name": "username_requested",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "photo_requested",
-          "type": "flags.2?true"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "button_id",
-          "type": "int"
-        },
-        {
-          "name": "peer_type",
-          "type": "RequestPeerType"
-        },
-        {
-          "name": "max_quantity",
-          "type": "int"
-        }
-      ],
-      "type": "KeyboardButton"
-    },
-    {
-      "id": 3167006480,
-      "predicate": "keyboardButtonCopy",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "style",
-          "type": "flags.10?KeyboardButtonStyle"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "copy_text",
-          "type": "string"
+          "name": "type",
+          "type": "ButtonType"
         }
       ],
       "type": "KeyboardButton"
@@ -12886,6 +12557,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.4?true"
         },
         {
+          "name": "force_reply",
+          "type": "flags.5?true"
+        },
+        {
           "name": "rows",
           "type": "Vector<KeyboardButtonRow>"
         },
@@ -12897,12 +12572,20 @@ var SCHEMA_GLOBAL = {
       "type": "ReplyMarkup"
     },
     {
-      "id": 1218642516,
+      "id": 2997966704,
       "predicate": "replyInlineMarkup",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "force_reply",
+          "type": "flags.5?true"
+        },
+        {
           "name": "rows",
-          "type": "Vector<KeyboardButtonRow>"
+          "type": "Vector<KeyboardInlineButtonRow>"
         }
       ],
       "type": "ReplyMarkup"
@@ -16028,6 +15711,29 @@ var SCHEMA_GLOBAL = {
       "type": "RichText"
     },
     {
+      "id": 2949094614,
+      "predicate": "textButton",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "text",
+          "type": "RichText"
+        },
+        {
+          "name": "type",
+          "type": "InlineButtonType"
+        },
+        {
+          "name": "style",
+          "type": "flags.0?RichButtonStyle"
+        }
+      ],
+      "type": "RichText"
+    },
+    {
       "id": 324435594,
       "predicate": "pageBlockUnsupported",
       "params": [],
@@ -16158,9 +15864,17 @@ var SCHEMA_GLOBAL = {
       "type": "PageBlock"
     },
     {
-      "id": 641563686,
+      "id": 1724999435,
       "predicate": "pageBlockBlockquote",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "collapsed",
+          "type": "flags.0?true"
+        },
         {
           "name": "text",
           "type": "RichText"
@@ -16422,6 +16136,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?true"
         },
         {
+          "name": "compact",
+          "type": "flags.2?true"
+        },
+        {
           "name": "title",
           "type": "RichText"
         },
@@ -16650,6 +16368,48 @@ var SCHEMA_GLOBAL = {
         {
           "name": "caption",
           "type": "RichText"
+        }
+      ],
+      "type": "PageBlock"
+    },
+    {
+      "id": 1835270936,
+      "predicate": "pageBlockButtonRow",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "align_left",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "align_center",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "align_right",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "buttons",
+          "type": "Vector<PageButton>"
+        }
+      ],
+      "type": "PageBlock"
+    },
+    {
+      "id": 955923363,
+      "predicate": "pageBlockDocument",
+      "params": [
+        {
+          "name": "document_id",
+          "type": "long"
+        },
+        {
+          "name": "caption",
+          "type": "PageCaption"
         }
       ],
       "type": "PageBlock"
@@ -20747,6 +20507,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "manage_linked_peers",
           "type": "flags.19?true"
+        },
+        {
+          "name": "manage_welcome_messages",
+          "type": "flags.20?true"
         }
       ],
       "type": "ChatAdminRights"
@@ -24597,7 +24361,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputInvoice"
     },
     {
-      "id": 3281998628,
+      "id": 3920676440,
       "predicate": "inputInvoiceStarGiftResale",
       "params": [
         {
@@ -24609,12 +24373,20 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "show_name",
+          "type": "flags.2?true"
+        },
+        {
           "name": "slug",
           "type": "string"
         },
         {
           "name": "to_id",
           "type": "InputPeer"
+        },
+        {
+          "name": "message",
+          "type": "flags.1?TextWithEntities"
         }
       ],
       "type": "InputInvoice"
@@ -33119,7 +32891,7 @@ var SCHEMA_GLOBAL = {
       "type": "communities.PeerLinkRequests"
     },
     {
-      "id": 3653688346,
+      "id": 3710369513,
       "predicate": "ephemeralMessage",
       "params": [
         {
@@ -33131,6 +32903,18 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
+          "name": "welcome_template",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "invert_media",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "noforwards",
+          "type": "flags.12?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -33140,7 +32924,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "peer_id",
-          "type": "Peer"
+          "type": "flags.9?Peer"
         },
         {
           "name": "receiver_id",
@@ -33173,6 +32957,18 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reply_to",
           "type": "flags.6?MessageReplyHeader"
+        },
+        {
+          "name": "rich_message",
+          "type": "flags.8?RichMessage"
+        },
+        {
+          "name": "chat_instance",
+          "type": "flags.10?long"
+        },
+        {
+          "name": "anchor_msg_id",
+          "type": "flags.11?int"
         }
       ],
       "type": "EphemeralMessage"
@@ -33221,6 +33017,393 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.ComposedRichMessageWithAI"
+    },
+    {
+      "id": 3386740969,
+      "predicate": "buttonTypeDefault",
+      "params": [],
+      "type": "ButtonType"
+    },
+    {
+      "id": 3745330937,
+      "predicate": "buttonTypeRequestPhone",
+      "params": [],
+      "type": "ButtonType"
+    },
+    {
+      "id": 2616123712,
+      "predicate": "buttonTypeRequestGeoLocation",
+      "params": [],
+      "type": "ButtonType"
+    },
+    {
+      "id": 2865758084,
+      "predicate": "buttonTypeRequestPoll",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "quiz",
+          "type": "flags.0?Bool"
+        }
+      ],
+      "type": "ButtonType"
+    },
+    {
+      "id": 1331208759,
+      "predicate": "buttonTypeRequestPeer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        },
+        {
+          "name": "peer_type",
+          "type": "RequestPeerType"
+        },
+        {
+          "name": "max_quantity",
+          "type": "int"
+        }
+      ],
+      "type": "ButtonType"
+    },
+    {
+      "id": 1071802622,
+      "predicate": "inputButtonTypeRequestPeer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "name_requested",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "username_requested",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "photo_requested",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        },
+        {
+          "name": "peer_type",
+          "type": "RequestPeerType"
+        },
+        {
+          "name": "max_quantity",
+          "type": "int"
+        }
+      ],
+      "type": "ButtonType"
+    },
+    {
+      "id": 3222952314,
+      "predicate": "buttonTypeSimpleWebView",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "ButtonType"
+    },
+    {
+      "id": 3970234580,
+      "predicate": "inlineButtonTypeUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 3218091426,
+      "predicate": "inlineButtonTypeUrlAuth",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "fwd_text",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 2573319348,
+      "predicate": "inputInlineButtonTypeUrlAuth",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "request_write_access",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "fwd_text",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "bot",
+          "type": "flags.2?InputUser"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 1003140532,
+      "predicate": "inlineButtonTypeWebView",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 693484600,
+      "predicate": "inlineButtonTypeCallback",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "requires_password",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 1557360797,
+      "predicate": "inlineButtonTypeGame",
+      "params": [],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 1220204453,
+      "predicate": "inlineButtonTypeBuy",
+      "params": [],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 2474065909,
+      "predicate": "inlineButtonTypeSwitchInline",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "same_peer",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "query",
+          "type": "string"
+        },
+        {
+          "name": "peer_types",
+          "type": "flags.1?Vector<InlineQueryPeerType>"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 1067663311,
+      "predicate": "inlineButtonTypeUserProfile",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "long"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 1408487002,
+      "predicate": "inputInlineButtonTypeUserProfile",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 3021812338,
+      "predicate": "inlineButtonTypeCopy",
+      "params": [
+        {
+          "name": "copy_text",
+          "type": "string"
+        }
+      ],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 2755158429,
+      "predicate": "inlineButtonTypeDisabled",
+      "params": [],
+      "type": "InlineButtonType"
+    },
+    {
+      "id": 297902882,
+      "predicate": "keyboardInlineButton",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "style",
+          "type": "flags.10?KeyboardButtonStyle"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "InlineButtonType"
+        }
+      ],
+      "type": "KeyboardInlineButton"
+    },
+    {
+      "id": 423758582,
+      "predicate": "keyboardInlineButtonRow",
+      "params": [
+        {
+          "name": "buttons",
+          "type": "Vector<KeyboardInlineButton>"
+        }
+      ],
+      "type": "KeyboardInlineButtonRow"
+    },
+    {
+      "id": 63312061,
+      "predicate": "richButtonStyle",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "bg_primary",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "bg_danger",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "bg_success",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "link",
+          "type": "flags.3?true"
+        }
+      ],
+      "type": "RichButtonStyle"
+    },
+    {
+      "id": 1764381832,
+      "predicate": "pageButton",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "text",
+          "type": "RichText"
+        },
+        {
+          "name": "type",
+          "type": "InlineButtonType"
+        },
+        {
+          "name": "style",
+          "type": "flags.0?RichButtonStyle"
+        }
+      ],
+      "type": "PageButton"
+    },
+    {
+      "id": 1509940017,
+      "predicate": "ephemeral.welcomeMessagesNotModified",
+      "params": [],
+      "type": "ephemeral.WelcomeMessages"
+    },
+    {
+      "id": 273664114,
+      "predicate": "ephemeral.welcomeMessages",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<EphemeralMessage>"
+        }
+      ],
+      "type": "ephemeral.WelcomeMessages"
+    },
+    {
+      "id": 3747266572,
+      "predicate": "auth.firebasePnvIntent",
+      "params": [
+        {
+          "name": "nonce",
+          "type": "string"
+        },
+        {
+          "name": "digital_credential_payload",
+          "type": "string"
+        }
+      ],
+      "type": "auth.FirebasePnvIntent"
     }
   ],
   "methods": [
@@ -33868,6 +34051,55 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_auth_key_id",
           "type": "flags.0?long"
+        }
+      ],
+      "type": "auth.Authorization"
+    },
+    {
+      "id": 2004743034,
+      "method": "auth.initFirebasePnvLogin",
+      "params": [
+        {
+          "name": "api_id",
+          "type": "int"
+        },
+        {
+          "name": "api_hash",
+          "type": "string"
+        }
+      ],
+      "type": "auth.FirebasePnvIntent"
+    },
+    {
+      "id": 746916172,
+      "method": "auth.finishFirebasePnvLogin",
+      "params": [
+        {
+          "name": "google_token",
+          "type": "string"
+        }
+      ],
+      "type": "auth.Authorization"
+    },
+    {
+      "id": 2017422166,
+      "method": "auth.firebasePnvSignUp",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "no_joined_notifications",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "first_name",
+          "type": "string"
+        },
+        {
+          "name": "last_name",
+          "type": "string"
         }
       ],
       "type": "auth.Authorization"
@@ -36711,6 +36943,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "allow_paid_floodskip",
           "type": "flags.19?true"
+        },
+        {
+          "name": "from_ephemeral",
+          "type": "flags.25?true"
         },
         {
           "name": "from_peer",
@@ -47955,7 +48191,7 @@ var SCHEMA_GLOBAL = {
       "type": "communities.ParticipantJoinedChats"
     },
     {
-      "id": 1758187679,
+      "id": 3129827125,
       "method": "ephemeral.sendMessage",
       "params": [
         {
@@ -47963,8 +48199,24 @@ var SCHEMA_GLOBAL = {
           "type": "#"
         },
         {
+          "name": "invert_media",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "welcome",
+          "type": "flags.7?true"
+        },
+        {
+          "name": "anchor",
+          "type": "flags.9?true"
+        },
+        {
+          "name": "noforwards",
+          "type": "flags.10?true"
+        },
+        {
           "name": "peer",
-          "type": "InputPeer"
+          "type": "flags.8?InputPeer"
         },
         {
           "name": "receiver_id",
@@ -48006,12 +48258,16 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 2747323665,
+      "id": 2465654679,
       "method": "ephemeral.deleteMessage",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "peer",
-          "type": "InputPeer"
+          "type": "flags.0?InputPeer"
         },
         {
           "name": "receiver_id",
@@ -48069,6 +48325,98 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.BotCallbackAnswer"
+    },
+    {
+      "id": 3483136603,
+      "method": "ephemeral.editMessage",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "invert_media",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "welcome",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "peer",
+          "type": "flags.7?InputPeer"
+        },
+        {
+          "name": "receiver_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "message",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "media",
+          "type": "flags.3?InputMedia"
+        },
+        {
+          "name": "entities",
+          "type": "flags.1?Vector<MessageEntity>"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.2?ReplyMarkup"
+        },
+        {
+          "name": "rich_message",
+          "type": "flags.4?InputRichMessage"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3900877281,
+      "method": "ephemeral.deleteWelcomeMessage",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1934595873,
+      "method": "ephemeral.deleteAllWelcomeMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3684352397,
+      "method": "ephemeral.getWelcomeMessages",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "ephemeral.WelcomeMessages"
     }
   ]
 }
