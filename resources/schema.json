@@ -21204,7 +21204,7 @@
       "type": "messages.SearchCounter"
     },
     {
-      "id": 1020666860,
+      "id": 3184157031,
       "predicate": "urlAuthResultRequest",
       "params": [
         {
@@ -21226,6 +21226,10 @@
         {
           "name": "is_app",
           "type": "flags.6?true"
+        },
+        {
+          "name": "request_wallet",
+          "type": "flags.8?true"
         },
         {
           "name": "bot",
@@ -21262,6 +21266,14 @@
         {
           "name": "verified_app_name",
           "type": "flags.7?string"
+        },
+        {
+          "name": "tc_session_id",
+          "type": "flags.9?long"
+        },
+        {
+          "name": "tc_client_id",
+          "type": "flags.10?string"
         }
       ],
       "type": "UrlAuthResult"
@@ -34465,6 +34477,29 @@
         }
       ],
       "type": "auth.FirebasePnvIntent"
+    },
+    {
+      "id": 1654613710,
+      "predicate": "inputTonConnectOauthSession",
+      "params": [
+        {
+          "name": "session_id",
+          "type": "long"
+        },
+        {
+          "name": "challenge_answer",
+          "type": "bytes"
+        },
+        {
+          "name": "body",
+          "type": "bytes"
+        },
+        {
+          "name": "proof",
+          "type": "WalletOwnershipProof"
+        }
+      ],
+      "type": "InputTonConnectOauthSession"
     }
   ],
   "methods": [
@@ -40077,7 +40112,7 @@
       "type": "UrlAuthResult"
     },
     {
-      "id": 1738797278,
+      "id": 417156754,
       "method": "messages.acceptUrlAuth",
       "params": [
         {
@@ -40111,6 +40146,10 @@
         {
           "name": "match_code",
           "type": "flags.4?string"
+        },
+        {
+          "name": "tonconnect_session",
+          "type": "flags.5?InputTonConnectOauthSession"
         }
       ],
       "type": "UrlAuthResult"
