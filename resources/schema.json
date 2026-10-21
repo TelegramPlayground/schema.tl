@@ -1611,7 +1611,7 @@
       "type": "Chat"
     },
     {
-      "id": 3567203526,
+      "id": 2060538432,
       "predicate": "channel",
       "params": [
         {
@@ -1735,6 +1735,10 @@
           "type": "flags2.19?true"
         },
         {
+          "name": "in_news",
+          "type": "flags2.21?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1821,6 +1825,10 @@
         {
           "name": "linked_community_id",
           "type": "flags2.20?long"
+        },
+        {
+          "name": "pinned_msg_id",
+          "type": "flags2.22?int"
         }
       ],
       "type": "Chat"
@@ -2042,7 +2050,7 @@
       "type": "ChatFull"
     },
     {
-      "id": 2689502522,
+      "id": 3301236032,
       "predicate": "channelFull",
       "params": [
         {
@@ -2324,6 +2332,10 @@
         {
           "name": "guard_bot_id",
           "type": "flags2.23?long"
+        },
+        {
+          "name": "share_theme",
+          "type": "flags2.25?ShareTheme"
         }
       ],
       "type": "ChatFull"
@@ -4770,6 +4782,12 @@
       "type": "MessageAction"
     },
     {
+      "id": 3251827142,
+      "predicate": "messageActionNoPaidMessagesTokenUsed",
+      "params": [],
+      "type": "MessageAction"
+    },
+    {
       "id": 4236900339,
       "predicate": "dialog",
       "params": [
@@ -5620,7 +5638,7 @@
       "type": "ReportReason"
     },
     {
-      "id": 114026053,
+      "id": 3104582397,
       "predicate": "userFull",
       "params": [
         {
@@ -5862,6 +5880,14 @@
         {
           "name": "bot_manager_id",
           "type": "flags2.25?long"
+        },
+        {
+          "name": "wallet_card",
+          "type": "flags2.19?wallet.Card"
+        },
+        {
+          "name": "share_theme",
+          "type": "flags2.27?ShareTheme"
         }
       ],
       "type": "UserFull"
@@ -22607,7 +22633,7 @@
       "type": "messages.DiscussionMessage"
     },
     {
-      "id": 462937446,
+      "id": 3719670645,
       "predicate": "messageReplyHeader",
       "params": [
         {
@@ -22669,6 +22695,10 @@
         {
           "name": "poll_option",
           "type": "flags.12?bytes"
+        },
+        {
+          "name": "quote_rich",
+          "type": "flags.14?Vector<RichText>"
         }
       ],
       "type": "MessageReplyHeader"
@@ -26710,7 +26740,7 @@
       "type": "stories.StoryViews"
     },
     {
-      "id": 1003796418,
+      "id": 1975627120,
       "predicate": "inputReplyToMessage",
       "params": [
         {
@@ -26752,6 +26782,10 @@
         {
           "name": "poll_option",
           "type": "flags.7?bytes"
+        },
+        {
+          "name": "quote_rich",
+          "type": "flags.8?Vector<RichText>"
         }
       ],
       "type": "InputReplyTo"
@@ -33993,6 +34027,44 @@
       "type": "WalletTransactionPeer"
     },
     {
+      "id": 1424428081,
+      "predicate": "walletTransactionPeerChannel",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel_id",
+          "type": "long"
+        },
+        {
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "name": "domain",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "WalletTransactionPeer"
+    },
+    {
+      "id": 4101149849,
+      "predicate": "walletTransactionPeerTelegramGift",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "own_profile",
+          "type": "flags.0?true"
+        }
+      ],
+      "type": "WalletTransactionPeer"
+    },
+    {
       "id": 2502803779,
       "predicate": "walletTransaction",
       "params": [
@@ -34386,7 +34458,7 @@
       "type": "wallet.NftAttribute"
     },
     {
-      "id": 876739868,
+      "id": 389937907,
       "predicate": "wallet.nftItem",
       "params": [
         {
@@ -34440,6 +34512,10 @@
         {
           "name": "extra",
           "type": "flags.8?DataJSON"
+        },
+        {
+          "name": "gift",
+          "type": "flags.9?StarGift"
         }
       ],
       "type": "wallet.NftItem"
@@ -34500,6 +34576,204 @@
         }
       ],
       "type": "InputTonConnectOauthSession"
+    },
+    {
+      "id": 1767755842,
+      "predicate": "exportedNoPaidMessagesToken",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "expires",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "ExportedNoPaidMessagesToken"
+    },
+    {
+      "id": 2511136847,
+      "predicate": "shareThemeDefault",
+      "params": [],
+      "type": "ShareTheme"
+    },
+    {
+      "id": 1689466081,
+      "predicate": "shareThemeEmojiBackdrop",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "backdrop_id",
+          "type": "flags.0?int"
+        },
+        {
+          "name": "emojis",
+          "type": "flags.1?Vector<Reaction>"
+        }
+      ],
+      "type": "ShareTheme"
+    },
+    {
+      "id": 3958171245,
+      "predicate": "shareThemeGift",
+      "params": [
+        {
+          "name": "stargift",
+          "type": "StarGift"
+        }
+      ],
+      "type": "ShareTheme"
+    },
+    {
+      "id": 1069099867,
+      "predicate": "inputShareThemeGift",
+      "params": [
+        {
+          "name": "stargift",
+          "type": "InputSavedStarGift"
+        }
+      ],
+      "type": "ShareTheme"
+    },
+    {
+      "id": 1170331218,
+      "predicate": "shareThemeBackdropOption",
+      "params": [
+        {
+          "name": "backdrop_id",
+          "type": "int"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "center_color",
+          "type": "int"
+        },
+        {
+          "name": "edge_color",
+          "type": "int"
+        },
+        {
+          "name": "pattern_color",
+          "type": "int"
+        },
+        {
+          "name": "text_color",
+          "type": "int"
+        }
+      ],
+      "type": "ShareThemeBackdropOption"
+    },
+    {
+      "id": 2050977279,
+      "predicate": "shareThemeBackdropsNotModified",
+      "params": [],
+      "type": "ShareThemeBackdrops"
+    },
+    {
+      "id": 2867518688,
+      "predicate": "shareThemeBackdrops",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        },
+        {
+          "name": "backdrops",
+          "type": "Vector<ShareThemeBackdropOption>"
+        }
+      ],
+      "type": "ShareThemeBackdrops"
+    },
+    {
+      "id": 1474250151,
+      "predicate": "inputWalletCardSticker",
+      "params": [
+        {
+          "name": "coordinates",
+          "type": "MediaAreaCoordinates"
+        },
+        {
+          "name": "nft_address",
+          "type": "string"
+        }
+      ],
+      "type": "InputWalletCardSticker"
+    },
+    {
+      "id": 4076932282,
+      "predicate": "wallet.cardSticker",
+      "params": [
+        {
+          "name": "coordinates",
+          "type": "MediaAreaCoordinates"
+        },
+        {
+          "name": "nft",
+          "type": "wallet.NftItem"
+        }
+      ],
+      "type": "wallet.CardSticker"
+    },
+    {
+      "id": 2396013489,
+      "predicate": "wallet.card",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "stickers",
+          "type": "flags.0?Vector<wallet.CardSticker>"
+        },
+        {
+          "name": "bg_nft_item",
+          "type": "flags.1?wallet.NftItem"
+        },
+        {
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "name": "balance",
+          "type": "long"
+        }
+      ],
+      "type": "wallet.Card"
+    },
+    {
+      "id": 1918612715,
+      "predicate": "payments.starGiftDepositPayload",
+      "params": [
+        {
+          "name": "nft_address",
+          "type": "string"
+        },
+        {
+          "name": "payload",
+          "type": "bytes"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        }
+      ],
+      "type": "payments.StarGiftDepositPayload"
     }
   ],
   "methods": [
@@ -37565,6 +37839,40 @@
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 2210760366,
+      "method": "contacts.exportNoPaidMessagesToken",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "revoke",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "temporary",
+          "type": "flags.1?true"
+        }
+      ],
+      "type": "ExportedNoPaidMessagesToken"
+    },
+    {
+      "id": 900187850,
+      "method": "contacts.importNoPaidMessagesToken",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        }
+      ],
+      "type": "User"
     },
     {
       "id": 1673946374,
@@ -43190,6 +43498,32 @@
       "type": "WebViewResult"
     },
     {
+      "id": 1770691354,
+      "method": "messages.setShareTheme",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "theme",
+          "type": "ShareTheme"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 4099514098,
+      "method": "messages.getShareThemeBackdrops",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "ShareThemeBackdrops"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -46291,16 +46625,20 @@
       "type": "payments.SavedStarGifts"
     },
     {
-      "id": 3496907688,
+      "id": 3368714619,
       "method": "payments.getStarGiftWithdrawalUrl",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "stargift",
           "type": "InputSavedStarGift"
         },
         {
-          "name": "password",
-          "type": "InputCheckPasswordSRP"
+          "name": "tmp_password",
+          "type": "bytes"
         }
       ],
       "type": "payments.StarGiftWithdrawalUrl"
@@ -46840,6 +47178,82 @@
         }
       ],
       "type": "OnrampSession"
+    },
+    {
+      "id": 3961532590,
+      "method": "payments.withdrawStarGift",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "keep_on_profile",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "stargift",
+          "type": "InputSavedStarGift"
+        },
+        {
+          "name": "tmp_password",
+          "type": "bytes"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3231902367,
+      "method": "payments.depositStarGift",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "hide_sender",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "payments.StarGiftDepositPayload"
+    },
+    {
+      "id": 1252389118,
+      "method": "payments.displayStarGift",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "flags.0?InputPeer"
+        },
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1020983466,
+      "method": "payments.deleteStarGift",
+      "params": [
+        {
+          "name": "stargift",
+          "type": "InputSavedStarGift"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 2418125671,
@@ -50196,6 +50610,25 @@
       "method": "wallet.tonConnectGetSessions",
       "params": [],
       "type": "wallet.TonConnectSessions"
+    },
+    {
+      "id": 109382060,
+      "method": "wallet.setCardStickers",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "stickers",
+          "type": "Vector<InputWalletCardSticker>"
+        },
+        {
+          "name": "bg_nft_address",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "wallet.Card"
     }
   ]
 }
