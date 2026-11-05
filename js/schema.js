@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 232
+var LAYER_NUMBER = 233
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -780,6 +780,64 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
+      "id": 1157021774,
+      "predicate": "inputMediaWidget",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "allow_queries",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "shared_widget",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "width",
+          "type": "int"
+        },
+        {
+          "name": "height",
+          "type": "int"
+        },
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.3?string"
+        }
+      ],
+      "type": "InputMedia"
+    },
+    {
+      "id": 2089114805,
+      "predicate": "inputMediaWidgetId",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "widget_id",
+          "type": "long"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "InputMedia"
+    },
+    {
       "id": 480546647,
       "predicate": "inputChatPhotoEmpty",
       "params": [],
@@ -1319,6 +1377,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.20?true"
         },
         {
+          "name": "bot_forum_sidebar",
+          "type": "flags2.22?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1739,6 +1801,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "in_news",
           "type": "flags2.21?true"
+        },
+        {
+          "name": "forum_sidebar",
+          "type": "flags2.23?true"
         },
         {
           "name": "id",
@@ -3341,6 +3407,57 @@ var SCHEMA_GLOBAL = {
         {
           "name": "call",
           "type": "InputGroupCall"
+        }
+      ],
+      "type": "MessageMedia"
+    },
+    {
+      "id": 574157332,
+      "predicate": "messageMediaWidget",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "is_copy",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "can_query",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "background_query",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "width",
+          "type": "int"
+        },
+        {
+          "name": "height",
+          "type": "int"
+        },
+        {
+          "name": "payload",
+          "type": "bytes"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.3?string"
+        },
+        {
+          "name": "public_data_hash",
+          "type": "flags.3?long"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.4?string"
+        },
+        {
+          "name": "widget_id",
+          "type": "flags.5?long"
         }
       ],
       "type": "MessageMedia"
@@ -9600,6 +9717,236 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
+      "id": 593913436,
+      "predicate": "updateEditForumTopic",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "topic_id",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "flags.1?long"
+        },
+        {
+          "name": "closed",
+          "type": "flags.2?Bool"
+        },
+        {
+          "name": "hidden",
+          "type": "flags.3?Bool"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3010723432,
+      "predicate": "updateBotWidgetQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "query_type",
+          "type": "WidgetQueryType"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "chat_instance",
+          "type": "long"
+        },
+        {
+          "name": "chat_type",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "name": "widget_id",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "wallet_card",
+          "type": "flags.1?wallet.Card"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2784001544,
+      "predicate": "updateInlineBotWidgetQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "query_type",
+          "type": "WidgetQueryType"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "inline_message_id",
+          "type": "InputBotInlineMessageID"
+        },
+        {
+          "name": "chat_instance",
+          "type": "long"
+        },
+        {
+          "name": "chat_type",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "name": "widget_id",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "wallet_card",
+          "type": "flags.1?wallet.Card"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 4203331319,
+      "predicate": "updateBotWidgetCopyQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "query_type",
+          "type": "WidgetQueryType"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "name": "widget_id",
+          "type": "long"
+        },
+        {
+          "name": "wallet_card",
+          "type": "flags.1?wallet.Card"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3148904669,
+      "predicate": "updateMessageWidgetData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "public_data_hash",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "pts",
+          "type": "int"
+        },
+        {
+          "name": "pts_count",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 1934372475,
+      "predicate": "updateTranscribedAudioFile",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pending",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "transcription_id",
+          "type": "long"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "type": "Update"
+    },
+    {
       "id": 2775329342,
       "predicate": "updates.state",
       "params": [
@@ -14069,6 +14416,96 @@ var SCHEMA_GLOBAL = {
       "type": "InputBotInlineMessage"
     },
     {
+      "id": 4120355824,
+      "predicate": "inputBotInlineMessageWidget",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "allow_queries",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "shared_widget",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "invert_media",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "width",
+          "type": "int"
+        },
+        {
+          "name": "height",
+          "type": "int"
+        },
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.2?string"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.3?string"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.4?ReplyMarkup"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.5?Vector<MessageEntity>"
+        }
+      ],
+      "type": "InputBotInlineMessage"
+    },
+    {
+      "id": 4270553387,
+      "predicate": "inputBotInlineMessageWidgetId",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "invert_media",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "widget_id",
+          "type": "long"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.1?ReplyMarkup"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.2?Vector<MessageEntity>"
+        }
+      ],
+      "type": "InputBotInlineMessage"
+    },
+    {
       "id": 2294256409,
       "predicate": "inputBotInlineResult",
       "params": [
@@ -14452,6 +14889,61 @@ var SCHEMA_GLOBAL = {
         {
           "name": "rich_message",
           "type": "RichMessage"
+        }
+      ],
+      "type": "BotInlineMessage"
+    },
+    {
+      "id": 3131144244,
+      "predicate": "botInlineMessageWidget",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "invert_media",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "width",
+          "type": "int"
+        },
+        {
+          "name": "height",
+          "type": "int"
+        },
+        {
+          "name": "payload",
+          "type": "bytes"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "public_data_hash",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "reply_markup",
+          "type": "flags.2?ReplyMarkup"
+        },
+        {
+          "name": "widget_id",
+          "type": "flags.3?long"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.4?Vector<MessageEntity>"
         }
       ],
       "type": "BotInlineMessage"
@@ -34776,6 +35268,123 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "payments.StarGiftDepositPayload"
+    },
+    {
+      "id": 1162684215,
+      "predicate": "userWallet",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "name": "balance",
+          "type": "long"
+        },
+        {
+          "name": "public_key",
+          "type": "flags.0?bytes"
+        },
+        {
+          "name": "state_init",
+          "type": "flags.0?bytes"
+        }
+      ],
+      "type": "UserWallet"
+    },
+    {
+      "id": 383307531,
+      "predicate": "widgetQueryTypeData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "with_wallet",
+          "type": "flags.0?true"
+        }
+      ],
+      "type": "WidgetQueryType"
+    },
+    {
+      "id": 421545948,
+      "predicate": "widgetQueryTypeSignData",
+      "params": [
+        {
+          "name": "wallet",
+          "type": "UserWallet"
+        },
+        {
+          "name": "sign_data",
+          "type": "DataJSON"
+        }
+      ],
+      "type": "WidgetQueryType"
+    },
+    {
+      "id": 4282069940,
+      "predicate": "widgetQueryTypeSentTransaction",
+      "params": [
+        {
+          "name": "wallet",
+          "type": "UserWallet"
+        },
+        {
+          "name": "msg_hash",
+          "type": "string"
+        }
+      ],
+      "type": "WidgetQueryType"
+    },
+    {
+      "id": 2511810595,
+      "predicate": "messages.botWidgetQueryAnswer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "result",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "messages.BotWidgetQueryAnswer"
+    },
+    {
+      "id": 3105451607,
+      "predicate": "messages.widgetPublicDataNotModified",
+      "params": [
+        {
+          "name": "period",
+          "type": "int"
+        }
+      ],
+      "type": "messages.WidgetPublicData"
+    },
+    {
+      "id": 71908351,
+      "predicate": "messages.widgetPublicData",
+      "params": [
+        {
+          "name": "hash",
+          "type": "long"
+        },
+        {
+          "name": "data",
+          "type": "string"
+        },
+        {
+          "name": "period",
+          "type": "int"
+        }
+      ],
+      "type": "messages.WidgetPublicData"
     }
   ],
   "methods": [
@@ -43526,6 +44135,166 @@ var SCHEMA_GLOBAL = {
       "type": "ShareThemeBackdrops"
     },
     {
+      "id": 1549075833,
+      "method": "messages.getBotWidgetQueryAnswer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "query_type",
+          "type": "WidgetQueryType"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "type": "messages.BotWidgetQueryAnswer"
+    },
+    {
+      "id": 4174244970,
+      "method": "messages.setBotWidgetQueryAnswer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "result",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 4129602590,
+      "method": "messages.editMessageWidgetData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.1?string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 1670827563,
+      "method": "messages.editInlineBotMessageWidgetData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "id",
+          "type": "InputBotInlineMessageID"
+        },
+        {
+          "name": "public_data",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "chat_data",
+          "type": "flags.1?string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3938665408,
+      "method": "messages.editWidgetData",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "widget_id",
+          "type": "long"
+        },
+        {
+          "name": "public_data",
+          "type": "string"
+        },
+        {
+          "name": "cache_time",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1875194241,
+      "method": "messages.getWidgetPublicData",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "messages.WidgetPublicData"
+    },
+    {
+      "id": 120401655,
+      "method": "messages.transcribeAudioFile",
+      "params": [
+        {
+          "name": "file",
+          "type": "InputFile"
+        }
+      ],
+      "type": "messages.TranscribedAudio"
+    },
+    {
+      "id": 3127695786,
+      "method": "messages.getTranscriptionLangs",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "flags.0?InputPeer"
+        }
+      ],
+      "type": "Vector<string>"
+    },
+    {
       "id": 3990128682,
       "method": "updates.getState",
       "params": [],
@@ -44856,7 +45625,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 1073174324,
+      "id": 2727684948,
       "method": "channels.toggleForum",
       "params": [
         {
@@ -44869,6 +45638,10 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "tabs",
+          "type": "Bool"
+        },
+        {
+          "name": "sidebar",
           "type": "Bool"
         }
       ],
